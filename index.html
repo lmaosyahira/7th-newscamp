@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NewsCamp 7.0 | The 54th Journalism e-Colloquium</title>
+
+  <!-- Google Fonts: Anton (CI Display) & Montserrat (Body & Nav) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#tab-home" class="brand">
+        <img src="assets/logo.png" alt="NewsCamp Logo" class="brand-logo" onerror="this.style.display='none'">
+        <div class="brand-text">
+          <span class="brand-title">#NEWSCAMP7.0</span>
+          <span class="brand-subtitle">THE 54TH e-COLLOQUIUM</span>
+        </div>
+      </a>
+
+      <!-- Mobile Hamburger Toggle -->
+      <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Nav Links -->
+      <nav class="nav-links" id="nav-links">
+        <a href="#tab-home" class="nav-item active">Home</a>
+        <a href="#tab-org-chart" class="nav-item">Organisational Structure</a>
+        <a href="#tab-journey" class="nav-item">Our Journey</a>
+        <a href="#tab-news" class="nav-item">News</a>
+        <a href="#tab-news-plus" class="nav-item">News+</a>
+        <a href="#tab-podcast" class="nav-item">Podcast</a>
+        
+        <div class="nav-status-mobile">
+          <span class="status-badge">OCTOBER 2026</span>
+        </div>
+      </nav>
+
+      <div class="nav-status-desktop">
+        <span class="status-badge">OCTOBER 2026</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="main-content">
+    
+    <!-- 1. HOME TAB (Active by default) -->
+    <section id="tab-home" class="tab-page active">
+      <div class="hero-section">
+        <div class="hero-tagline">STORIES THAT SOLVE</div>
+        <h1 class="hero-title">JOURNALISM THROUGH A NEW LENS</h1>
+        <p class="hero-subtext">The 54th Journalism e-Colloquium & Publication Directory</p>
+      </div>
+    </section>
+
+    <!-- 2. ORGANISATIONAL STRUCTURE TAB (Hidden until clicked) -->
+    <section id="tab-org-chart" class="tab-page">
+      <div class="org-section">
+        <div class="org-header">
+          <h1 class="org-title">Organisational Structure</h1>
+          <p class="org-subtitle">The minds behind the mission and the stories. Meet our Committee and Editorial teams.</p>
+        </div>
+
+        <!-- Main Dual-Pill Switcher -->
+        <div class="pill-switcher-container">
+          <div class="pill-switcher">
+            <button class="main-tab-btn active" data-main="newscamp">NEWSCAMP COMMITTEE</button>
+            <button class="main-tab-btn" data-main="editorial">EDITORIAL BOARD</button>
+          </div>
+        </div>
+
+        <!-- Subtabs Bar -->
+        <div class="subtabs-bar" id="subtabs-bar"></div>
+
+        <!-- Dynamic Advisor Showcase -->
+        <div class="advisor-showcase" id="advisor-showcase"></div>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+          <span class="divider-line"></span>
+          <span class="divider-text" id="divider-label">EXECUTIVE HIGH COMMITTEE & DEPARTMENTS</span>
+          <span class="divider-line"></span>
+        </div>
+
+        <!-- Dynamic Member Cards Grid -->
+        <div class="members-grid" id="members-grid"></div>
+      </div>
+    </section>
+
+    <!-- 3. OUR JOURNEY TAB -->
+    <section id="tab-journey" class="tab-page">
+      <div class="hero-section">
+        <h1 class="hero-title">OUR JOURNEY</h1>
+        <p class="hero-subtext">Milestones, behind-the-scenes, and the timeline of NewsCamp 7.0.</p>
+      </div>
+    </section>
+
+    <!-- 4. NEWS TAB -->
+    <section id="tab-news" class="tab-page">
+      <div class="hero-section">
+        <h1 class="hero-title">NEWS</h1>
+        <p class="hero-subtext">Latest event coverage, articles, and colloquium reports.</p>
+      </div>
+    </section>
+
+    <!-- 5. NEWS+ TAB -->
+    <section id="tab-news-plus" class="tab-page">
+      <div class="hero-section">
+        <h1 class="hero-title">NEWS+</h1>
+        <p class="hero-subtext">Exclusive feature stories, analyses, and in-depth investigations.</p>
+      </div>
+    </section>
+
+    <!-- 6. PODCAST TAB -->
+    <section id="tab-podcast" class="tab-page">
+      <div class="hero-section">
+        <h1 class="hero-title">PODCAST</h1>
+        <p class="hero-subtext">Tune into conversations with our journalists, guests, and media practitioners.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>© 2026 #NewsCamp7.0 | The 54th Journalism e-Colloquium. All rights reserved.</p>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
