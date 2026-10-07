@@ -209,10 +209,12 @@ body {
 }
 
 .org-title {
-  font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 800;
-  color: #0b192c;
-  letter-spacing: -0.5px;
+  font-family: var(--font-display);      /* Sets the font to Anton */
+  font-size: clamp(2.5rem, 5vw, 3.8rem);
+  letter-spacing: 1.5px;
+  color: var(--ci-burgundy);             /* Changes color to Burgundy (#79040A) */
+  text-transform: uppercase;             /* Matches the uppercase look */
+  line-height: 1.1;
   margin-bottom: 0.75rem;
 }
 
