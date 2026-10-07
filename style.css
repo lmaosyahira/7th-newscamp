@@ -209,13 +209,13 @@ body {
 }
 
 .org-title {
-  font-family: var(--font-display);      /* Sets the font to Anton */
-  font-size: clamp(2.5rem, 5vw, 3.8rem);
-  letter-spacing: 1.5px;
-  color: var(--ci-burgundy);             /* Changes color to Burgundy (#79040A) */
-  text-transform: uppercase;             /* Matches the uppercase look */
-  line-height: 1.1;
-  margin-bottom: 0.75rem;
+  font-family: 'Anton', sans-serif !important;
+  font-size: clamp(2.5rem, 5vw, 3.8rem) !important;
+  letter-spacing: 1.5px !important;
+  color: #79040A !important;
+  text-transform: uppercase !important;
+  line-height: 1.1 !important;
+  margin-bottom: 0.75rem !important;
 }
 
 .org-subtitle {
