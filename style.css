@@ -86,16 +86,17 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1.25rem; /* Reduced slightly to prevent line wrapping */
 }
 
 .nav-item {
   position: relative;
   text-decoration: none;
   color: var(--ci-muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   padding: 8px 0;
+  white-space: nowrap; /* Prevents text from breaking mid-word */
   transition: color 0.2s ease;
 }
 
@@ -162,35 +163,95 @@ body {
   opacity: 1;
 }
 
-/* Hero Section */
+/* Hero & Page Header Blocks */
 .hero-section {
-  max-width: 1100px;
-  margin: 3.5rem auto 2.5rem;
+  max-width: 1000px;
+  margin: 4rem auto 2.5rem;
   padding: 0 1.5rem;
   text-align: center;
 }
 
 .hero-tagline {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   letter-spacing: 2px;
   color: var(--ci-burgundy);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .hero-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 3.8rem);
+  font-size: clamp(2.4rem, 5vw, 4rem);
   letter-spacing: 1.5px;
   color: var(--ci-burgundy);
   line-height: 1.1;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .hero-subtext {
-  font-size: 1.05rem;
-  color: var(--ci-muted);
+  font-size: 1.1rem;
+  color: #475569;
   font-weight: 500;
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  line-height: 1.6;
+}
+
+/* Content Container for Other Pages */
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto 5rem;
+  padding: 0 1.5rem;
+}
+
+/* Feature Grid for Home / News / Journey Cards */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.feature-card {
+  background: var(--ci-white);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: left;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(121, 4, 10, 0.08);
+  border-color: rgba(121, 4, 10, 0.2);
+}
+
+.feature-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--ci-burgundy);
+  background-color: var(--ci-light-blue);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: #0b192c;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.75rem;
+}
+
+.feature-card p {
+  font-size: 0.9rem;
+  color: #64748b;
+  line-height: 1.5;
 }
 
 /* Organisational Section Header */
