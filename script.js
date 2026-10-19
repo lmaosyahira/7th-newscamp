@@ -56,91 +56,120 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 3. ORGANISATIONAL CHART DATABASE
   // ==========================================
-  const orgData = {
-    newscamp: {
-      advisor: {
-        role: "Project Advisor",
-        name: "AZLINAWATI NGAINON",
-        image: "assets/advisor.jpg"
-      },
-      subtabs: [
-        { id: "all", label: "All Committees" },
-        { id: "high-committee", label: "Executive High Committee" },
-        { id: "program-protocol", label: "Program and Protocol" },
-        { id: "creative-design", label: "Creative and Design" },
-        { id: "multimedia-publicity", label: "Multimedia and Publicity" },
-        { id: "logistics", label: "Logistics" },
-        { id: "technical", label: "Technical" },
-        { id: "sponsorship", label: "Sponsorship" }
-      ],
+  const newscampData = {
+  advisor: {
+    name: "Puan Azlinawati binti Ngainon",
+    role: "Penasihat"
+  },
+  executives: [
+    { name: "Nur Iman Jasmyn binti Mohd Zamri", role: "Project Director" },
+    { name: "Putri Nur Gustawina binti Hermes", role: "Project Director" },
+    { name: "Media Putra", role: "Deputy Director" },
+    { name: "Madelin Suraya binti Mohd Asri", role: "Secretary" },
+    { name: "Syazwani Athirah binti Hasnan", role: "Assistant Secretary" },
+    { name: "Noor Alya Nisa binti Md Yusri", role: "Treasurer" },
+    { name: "Muhammad Farhan bin Ramlan", role: "Assistant Treasurer" }
+  ],
+  departments: [
+    {
+      id: "prog-proto",
+      label: "Program & Protocol",
+      departmentName: "Program & Protocol // Corp Comm",
+      head1: { name: "Umi Rabiatul Adawiah binti Muhamad", role: "Head of Department 1" },
+      head2: { name: "Nurul Sakinah binti Sofli", role: "Head of Department 2" },
       members: [
-        // Executive High Committee
-        { name: "NUR IMAN JASMYN BINTI MOHD ZAMRI", role: "Project Director", category: "high-committee", classGroup: "5B" },
-        { name: "PUTRI NUR GUSTAWINA BINTI HERMES MEDIA PUTRA", role: "Deputy Project Director", category: "high-committee", classGroup: "5C" },
-        { name: "MADELIN SURAYA BINTI MOHD ASRI", role: "Secretary", category: "high-committee", classGroup: "5A" },
-        { name: "SYAZWANI ATHIRAH BINTI HASNAN", role: "Vice Secretary", category: "high-committee", classGroup: "5C" },
-        { name: "NOOR ALYA NISA BINTI MD YUSRI", role: "Treasurer", category: "high-committee", classGroup: "5C" },
-        { name: "MUHAMMAD FARHAN BIN RAMLAN", role: "Vice Treasurer", category: "high-committee", classGroup: "5B" },
-
-        // Program and Protocol
-        { name: "UMI RABIATUL ADAWIAH BINTI MUHAMAD", role: "Head of Department I", category: "program-protocol", classGroup: "5A" },
-        { name: "NURUL SAKINAH BINTI SOFLI", role: "Head of Department II", category: "program-protocol", classGroup: "5B" },
-        { name: "SITI HUMAIRAH BINTI ABDUL RAHIM", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5B" },
-        { name: "AIN NUR MELISSA BINTI IBRAHIM", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5C" },
-        { name: "KAMELIA SHAIRA BINTI KAMARUDIN", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5C" },
-        { name: "NUR AMEENA BINTI AZMAN", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5A" },
-        { name: "SARAH HANIS WADHIHAH BT ZABIDI", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5A" },
-        { name: "NURUL FARISHA BINTI AHMAD FAISAL", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5C" },
-        { name: "NURUL RUSYDINA BINTI MOHD RIDUWAN", role: "Program and Protocol Committee", category: "program-protocol", classGroup: "5B" },
-
-        // Creative and Design
-        { name: "ASLINA", role: "Head of Department I", category: "creative-design", classGroup: "5B" },
-        { name: "NUR AIN DAYANA BINTI MOHD FADIL", role: "Head of Department II", category: "creative-design", classGroup: "5A" },
-        { name: "QURRATU AINI BINTI CHE MOHD SHAHRIL", role: "Creative and Design Committee", category: "creative-design", classGroup: "5A" },
-        { name: "NURUL SYAHIRA BINTI AFZANIZAM", role: "Creative and Design Committee", category: "creative-design", classGroup: "5A" },
-        { name: "NIK NUR ALYAA BINTI NIK MOHAMED", role: "Creative and Design Committee", category: "creative-design", classGroup: "5B" },
-        { name: "NUR ATIQAH NATASYA BINTI ABD SAMAD", role: "Creative and Design Committee", category: "creative-design", classGroup: "5A" },
-        { name: "NURR EDRINNA BINTI JUNAIDI", role: "Creative and Design Committee", category: "creative-design", classGroup: "5C" },
-        { name: "NUR FAZLINA BINTI AMIL HASLI", role: "Creative and Design Committee", category: "creative-design", classGroup: "5A" },
-
-        // Multimedia and Publicity
-        { name: "NURSYAZIYAH SYAZANA BINTI AHMAD", role: "Head of Department I", category: "multimedia-publicity", classGroup: "5B" },
-        { name: "NUREEN BATRISYIA IRDINA BINTI MOHD SHAM", role: "Head of Department II", category: "multimedia-publicity", classGroup: "5C" },
-        { name: "AUNI SYAFIAH BINTI MOHD AZMIZAN", role: "Multimedia and Publicity Committee", category: "multimedia-publicity", classGroup: "5A" },
-        { name: "ARISSA BINTI AHMAD KHAIRUL", role: "Multimedia and Publicity Committee", category: "multimedia-publicity", classGroup: "5C" },
-        { name: "AIN ZULFA BINTI ZAINIZAM", role: "Multimedia and Publicity Committee", category: "multimedia-publicity", classGroup: "5B" },
-        { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Multimedia and Publicity Committee", category: "multimedia-publicity", classGroup: "5B" },
-        { name: "AIMAN DANISH ISKANDAR BIN MOHD ZUL ISKANDAR", role: "Multimedia and Publicity Committee", category: "multimedia-publicity", classGroup: "5C" },
-
-        // Logistics
-        { name: "AMMAR A'FIF BIN MD A'FIFULLAH", role: "Head of Department I", category: "logistics", classGroup: "5C" },
-        { name: "NURFARAHIN BINTI MOHAMAD ZAIDI", role: "Head of Department II", category: "logistics", classGroup: "5C" },
-        { name: "MUHAMMAD NAIM BIN AZIZUL RAHMAN", role: "Logistics Committee", category: "logistics", classGroup: "5A" },
-        { name: "AHMAD FIRDAUS BIN ABDUL RAHMAN", role: "Logistics Committee", category: "logistics", classGroup: "5A" },
-        { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Logistics Committee", category: "logistics", classGroup: "5C" },
-        { name: "AHMAD HAZIQ BIN ROSELY", role: "Logistics Committee", category: "logistics", classGroup: "5C" },
-        { name: "ARIEQ SHAFI BIN NOR ADNAN", role: "Logistics Committee", category: "logistics", classGroup: "5B" },
-
-        // Technical
-        { name: "FATIN HANA SOLEHAH BINTI SHUHARDI", role: "Head of Department I", category: "technical", classGroup: "5B" },
-        { name: "MUHAMMAD HAZIQ BIN KHAIRUL ANUAR", role: "Head of Department II", category: "technical", classGroup: "5B" },
-        { name: "NUR ZULAIKA BINTI MOHD KAMARUL AZLAN", role: "Technical Committee", category: "technical", classGroup: "5C" },
-        { name: "ABDUL BASSIT BIN SASHIM@HASHIM", role: "Technical Committee", category: "technical", classGroup: "5A" },
-        { name: "NUR AINA FATINI BINTI NASRUDDIN", role: "Technical Committee", category: "technical", classGroup: "5C" },
-        { name: "NUR NADIA BINTI MOHD ROSLAN", role: "Technical Committee", category: "technical", classGroup: "5C" },
-
-        // Sponsorship
-        { name: "NUR ANIS LIYANA BINTI MAT ARIS", role: "Head of Department I", category: "sponsorship", classGroup: "5A" },
-        { name: "AIN NAJIHAH BINTI KHABIL", role: "Head of Department II", category: "sponsorship", classGroup: "5C" },
-        { name: "SYASYA QISTINA BINTI MOHD HAIRUL NIZAM", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5A" },
-        { name: "AKMAL NABILAH BINTI SARAFUDDIN", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5B" },
-        { name: "FATIN NAJIHA BINTI ALI SHARIFUDDIN", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5B" },
-        { name: "NURIN ISABELLA BINTI ZULKAPLI", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5C" },
-        { name: "MUHAMMAD HAIKAL BIN YURI AZHAR", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5C" },
-        { name: "SITI NADIAH BINTI MAZLAN", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5B" },
-        { name: "NUR ALIA MAISARAH BINTI AHMAD KAMAL", role: "Sponsorship Committee", category: "sponsorship", classGroup: "5C" }
+        "Siti Humairah binti Abdul Rahim",
+        "Ain Nur Melissa binti Ibrahim",
+        "Kamelia Shaira binti Kamarudin",
+        "Nur Ameena binti Azman",
+        "Sarah Hanis Wadhibah binti Zabidi",
+        "Nurul Farisha binti Ahmad Faisal",
+        "Nurul Rusydina binti Mohd Riduwan"
       ]
     },
+    {
+      id: "creative",
+      label: "Creative Team",
+      departmentName: "Creative Team",
+      head1: { name: "Aslina", role: "Head of Department 1" },
+      head2: { name: "Nur Ain Dayana binti Mohd Fadil", role: "Head of Department 2" },
+      members: [
+        "Qurratu Aini binti Che Mohd Shahril",
+        "Nurul Syahira binti Afzanizam",
+        "Nik Nur Alyaa binti Nik Mohamed",
+        "Nur Atiqah Natasya binti Abd Samad",
+        "Nurr Edrinna binti Junaidi",
+        "Nur Fazlina binti Amil Hasli"
+      ]
+    },
+    {
+      id: "media-pub",
+      label: "Media & Publicity",
+      departmentName: "Media and Publicity",
+      head1: { name: "Nursyaziyah Syazana binti Ahmad", role: "Head of Department 1" },
+      head2: { name: "Nureen Batrisyia Irdina binti Sham Mohd", role: "Head of Department 2" },
+      members: [
+        "Auni Syafiah binti Mohd Azmizan",
+        "Arissa binti Ahmad Khairul",
+        "Ain Zulfa binti Zainizam",
+        "Muhammad Danish Aiman bin Mohd Zuki",
+        "Naufal Muammar bin Zaiful Hizam"
+      ]
+    },
+    {
+      id: "logistics",
+      label: "Logistics",
+      departmentName: "Logistics",
+      head1: { name: "Ahmad Firdaus bin Abdul Rahman", role: "Head of Department 1" },
+      head2: { name: "Nurfarahin binti Mohamad Zaidi", role: "Head of Department 2" },
+      members: [
+        "Muhammad Naim bin Azizul Rahman",
+        "Aiman Danish Iskandar bin Mohd Zul Iskandar",
+        "Siti Nadiah binti Mazlan"
+      ]
+    },
+    {
+      id: "sponsorship",
+      label: "Sponsorship & Partnership",
+      departmentName: "Sponsorship and Partnership",
+      head1: { name: "Nur Anis Liyana binti Mat Aris", role: "Head of Department 1" },
+      head2: { name: "Ain Najihah binti Khabil", role: "Head of Department 2" },
+      members: [
+        "Syasya Qistina binti Mohd Hairul Nizam",
+        "Akmal Nabilah binti Sarafuddin",
+        "Fatin Najiha binti Ali Sharifuddin",
+        "Nurin Isabella binti Zulkapli",
+        "Muhammad Haikal bin Yuri Azhar",
+        "Nur Alia Maisarah binti Ahmad Kamal",
+        "Ahmad Haziq bin Rosely"
+      ]
+    },
+    {
+      id: "technical",
+      label: "Technical",
+      departmentName: "Technical",
+      head1: { name: "Fatin Hana Solehah binti Shuhardi", role: "Head of Department 1" },
+      head2: { name: "Muhammad Haziq bin Khairul Anuar", role: "Head of Department 2" },
+      members: [
+        "Nur Zulaika binti Mohd Kamarul Azlan",
+        "Abdul Bassit bin Sashim@Hashim",
+        "Nur Aina Fatini binti Nasruddin",
+        "Nur Nadia binti Mohd Roslan"
+      ]
+    },
+    {
+      id: "hospitality",
+      label: "Special Task & Hospitality",
+      departmentName: "Special Task and Hospitality",
+      head1: null,
+      head2: null,
+      members: [
+        "Ammar A'fif bin Md A'fifullah",
+        "Arieq Shafi bin Nor Adnan"
+      ]
+    }
+  ]
+};
     editorial: {
       advisor: {
         role: "Editorial Advisor",
