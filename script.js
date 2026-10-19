@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+
   // ==========================================
   // 1. MOBILE NAVBAR TOGGLE
   // ==========================================
@@ -20,173 +21,162 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-// ==========================================
+  // ==========================================
   // 2. TAB PAGE ROUTING (SWITCH TABS ON CLICK)
   // ==========================================
   const navItems = document.querySelectorAll('.nav-item');
   const tabPages = document.querySelectorAll('.tab-page');
 
   function switchTab(targetId) {
-    // 1. Hide all pages
-    tabPages.forEach(page => page.classList.remove('active'));
+    if (!targetId) return;
 
-    // 2. Deactivate all navbar links
+    // 1. Hide all tab sections
+    tabPages.forEach(page => {
+      page.classList.remove('active');
+      page.style.display = 'none';
+      page.style.opacity = '0';
+    });
+
+    // 2. Remove active state from navbar links
     navItems.forEach(item => item.classList.remove('active'));
 
-    // 3. Show target page
+    // 3. Show targeted section
     const targetPage = document.getElementById(targetId);
     if (targetPage) {
       targetPage.classList.add('active');
+      targetPage.style.display = 'block';
+      setTimeout(() => { targetPage.style.opacity = '1'; }, 10);
     }
 
-    // 4. Highlight clicked navbar link
-    const activeLink = document.querySelector(`.nav-item[data-tab="${targetId}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
+    // 4. Highlight active navbar item
+    const matchingLink = document.querySelector(`.nav-item[data-tab="${targetId}"]`) || 
+                          document.querySelector(`.nav-item[href="#${targetId}"]`);
+    if (matchingLink) {
+      matchingLink.classList.add('active');
+    }
+
+    // 5. Close mobile menu drawer if open
+    if (navLinks && menuToggle) {
+      navLinks.classList.remove('open');
+      menuToggle.classList.remove('is-active');
     }
   }
 
-  // Attach click listener to each nav link
+  // Bind click listener to each nav link
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      e.preventDefault(); // Prevents jumping or breaking
-      const targetId = item.getAttribute('data-tab');
+      e.preventDefault();
+      const targetId = item.getAttribute('data-tab') || item.getAttribute('href').replace('#', '');
       if (targetId) {
         switchTab(targetId);
-        window.location.hash = targetId;
+        history.pushState(null, null, `#${targetId}`);
       }
     });
   });
 
-  // Load correct tab on page refresh if URL contains a hash
+  // Handle direct loads or reloads with hash
   const initialHash = window.location.hash.replace('#', '');
   if (initialHash && document.getElementById(initialHash)) {
     switchTab(initialHash);
   } else {
     switchTab('tab-home');
   }
-  
+
   // ==========================================
   // 3. ORGANISATIONAL CHART DATABASE
   // ==========================================
-  const newscampData = {
-  advisor: {
-    name: "Puan Azlinawati binti Ngainon",
-    role: "Penasihat"
-  },
-  executives: [
-    { name: "Nur Iman Jasmyn binti Mohd Zamri", role: "Project Director" },
-    { name: "Putri Nur Gustawina binti Hermes", role: "Project Director" },
-    { name: "Media Putra", role: "Deputy Director" },
-    { name: "Madelin Suraya binti Mohd Asri", role: "Secretary" },
-    { name: "Syazwani Athirah binti Hasnan", role: "Assistant Secretary" },
-    { name: "Noor Alya Nisa binti Md Yusri", role: "Treasurer" },
-    { name: "Muhammad Farhan bin Ramlan", role: "Assistant Treasurer" }
-  ],
-  departments: [
-    {
-      id: "prog-proto",
-      label: "Program & Protocol",
-      departmentName: "Program & Protocol // Corp Comm",
-      head1: { name: "Umi Rabiatul Adawiah binti Muhamad", role: "Head of Department 1" },
-      head2: { name: "Nurul Sakinah binti Sofli", role: "Head of Department 2" },
+  const orgData = {
+    newscamp: {
+      advisor: {
+        role: "Penasihat",
+        name: "PUAN AZLINAWATI BINTI NGAINON",
+        image: "assets/advisor.jpg"
+      },
+      subtabs: [
+        { id: "all", label: "All Committee" },
+        { id: "high-comm", label: "High Committee" },
+        { id: "prog-proto", label: "Program & Protocol" },
+        { id: "creative", label: "Creative Team" },
+        { id: "media-pub", label: "Media & Publicity" },
+        { id: "logistics", label: "Logistics" },
+        { id: "sponsorship", label: "Sponsorship & Partnership" },
+        { id: "technical", label: "Technical" },
+        { id: "hospitality", label: "Special Task & Hospitality" }
+      ],
       members: [
-        "Siti Humairah binti Abdul Rahim",
-        "Ain Nur Melissa binti Ibrahim",
-        "Kamelia Shaira binti Kamarudin",
-        "Nur Ameena binti Azman",
-        "Sarah Hanis Wadhibah binti Zabidi",
-        "Nurul Farisha binti Ahmad Faisal",
-        "Nurul Rusydina binti Mohd Riduwan"
+        // High Committee
+        { name: "NUR IMAN JASMYN BINTI MOHD ZAMRI", role: "Project Director", category: "high-comm", classGroup: "5B" },
+        { name: "PUTRI NUR GUSTAWINA BINTI HERMES MEDIA PUTRA", role: "Project Director", category: "high-comm", classGroup: "5C" },
+        { name: "MADELIN SURAYA BINTI MOHD ASRI", role: "Secretary", category: "high-comm", classGroup: "5A" },
+        { name: "SYAZWANI ATHIRAH BINTI HASNAN", role: "Assistant Secretary", category: "high-comm", classGroup: "5C" },
+        { name: "NOOR ALYA NISA BINTI MD YUSRI", role: "Treasurer", category: "high-comm", classGroup: "5C" },
+        { name: "MUHAMMAD FARHAN BIN RAMLAN", role: "Assistant Treasurer", category: "high-comm", classGroup: "5B" },
+
+        // Program & Protocol
+        { name: "UMI RABIATUL ADAWIAH BINTI MUHAMAD", role: "Head of Department 1", category: "prog-proto", classGroup: "5A" },
+        { name: "NURUL SAKINAH BINTI SOFLI", role: "Head of Department 2", category: "prog-proto", classGroup: "5B" },
+        { name: "SITI HUMAIRAH BINTI ABDUL RAHIM", role: "Committee Member", category: "prog-proto", classGroup: "5B" },
+        { name: "AIN NUR MELISSA BINTI IBRAHIM", role: "Committee Member", category: "prog-proto", classGroup: "5C" },
+        { name: "KAMELIA SHAIRA BINTI KAMARUDIN", role: "Committee Member", category: "prog-proto", classGroup: "5C" },
+        { name: "NUR AMEENA BINTI AZMAN", role: "Committee Member", category: "prog-proto", classGroup: "5A" },
+        { name: "SARAH HANIS WADHIHAH BINTI ZABIDI", role: "Committee Member", category: "prog-proto", classGroup: "5A" },
+        { name: "NURUL FARISHA BINTI AHMAD FAISAL", role: "Committee Member", category: "prog-proto", classGroup: "5C" },
+        { name: "NURUL RUSYDINA BINTI MOHD RIDUWAN", role: "Committee Member", category: "prog-proto", classGroup: "5B" },
+
+        // Creative Team
+        { name: "ASLINA", role: "Head of Department 1", category: "creative", classGroup: "5B" },
+        { name: "NUR AIN DAYANA BINTI MOHD FADIL", role: "Head of Department 2", category: "creative", classGroup: "5A" },
+        { name: "QURRATU AINI BINTI CHE MOHD SHAHRIL", role: "Committee Member", category: "creative", classGroup: "5A" },
+        { name: "NURUL SYAHIRA BINTI AFZANIZAM", role: "Committee Member", category: "creative", classGroup: "5A" },
+        { name: "NIK NUR ALYAA BINTI NIK MOHAMED", role: "Committee Member", category: "creative", classGroup: "5B" },
+        { name: "NUR ATIQAH NATASYA BINTI ABD SAMAD", role: "Committee Member", category: "creative", classGroup: "5A" },
+        { name: "NURR EDRINNA BINTI JUNAIDI", role: "Committee Member", category: "creative", classGroup: "5C" },
+        { name: "NUR FAZLINA BINTI AMIL HASLI", role: "Committee Member", category: "creative", classGroup: "5A" },
+
+        // Media and Publicity
+        { name: "NURSYAZIYAH SYAZANA BINTI AHMAD", role: "Head of Department 1", category: "media-pub", classGroup: "5B" },
+        { name: "NUREEN BATRISYIA IRDINA BINTI MOHD SHAM", role: "Head of Department 2", category: "media-pub", classGroup: "5C" },
+        { name: "AUNI SYAFIAH BINTI MOHD AZMIZAN", role: "Committee Member", category: "media-pub", classGroup: "5A" },
+        { name: "ARISSA BINTI AHMAD KHAIRUL", role: "Committee Member", category: "media-pub", classGroup: "5C" },
+        { name: "AIN ZULFA BINTI ZAINIZAM", role: "Committee Member", category: "media-pub", classGroup: "5B" },
+        { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Committee Member", category: "media-pub", classGroup: "5B" },
+        { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Committee Member", category: "media-pub", classGroup: "5C" },
+
+        // Logistics
+        { name: "AHMAD FIRDAUS BIN ABDUL RAHMAN", role: "Head of Department 1", category: "logistics", classGroup: "5A" },
+        { name: "NURFARAHIN BINTI MOHAMAD ZAIDI", role: "Head of Department 2", category: "logistics", classGroup: "5C" },
+        { name: "MUHAMMAD NAIM BIN AZIZUL RAHMAN", role: "Committee Member", category: "logistics", classGroup: "5A" },
+        { name: "AIMAN DANISH ISKANDAR BIN MOHD ZUL ISKANDAR", role: "Committee Member", category: "logistics", classGroup: "5C" },
+        { name: "SITI NADIAH BINTI MAZLAN", role: "Committee Member", category: "logistics", classGroup: "5B" },
+
+        // Sponsorship and Partnership
+        { name: "NUR ANIS LIYANA BINTI MAT ARIS", role: "Head of Department 1", category: "sponsorship", classGroup: "5A" },
+        { name: "AIN NAJIHAH BINTI KHABIL", role: "Head of Department 2", category: "sponsorship", classGroup: "5C" },
+        { name: "SYASYA QISTINA BINTI MOHD HAIRUL NIZAM", role: "Committee Member", category: "sponsorship", classGroup: "5A" },
+        { name: "AKMAL NABILAH BINTI SARAFUDDIN", role: "Committee Member", category: "sponsorship", classGroup: "5B" },
+        { name: "FATIN NAJIHA BINTI ALI SHARIFUDDIN", role: "Committee Member", category: "sponsorship", classGroup: "5B" },
+        { name: "NURIN ISABELLA BINTI ZULKAPLI", role: "Committee Member", category: "sponsorship", classGroup: "5C" },
+        { name: "MUHAMMAD HAIKAL BIN YURI AZHAR", role: "Committee Member", category: "sponsorship", classGroup: "5C" },
+        { name: "NUR ALIA MAISARAH BINTI AHMAD KAMAL", role: "Committee Member", category: "sponsorship", classGroup: "5C" },
+        { name: "AHMAD HAZIQ BIN ROSELY", role: "Committee Member", category: "sponsorship", classGroup: "5C" },
+
+        // Technical
+        { name: "FATIN HANA SOLEHAH BINTI SHUHARDI", role: "Head of Department 1", category: "technical", classGroup: "5B" },
+        { name: "MUHAMMAD HAZIQ BIN KHAIRUL ANUAR", role: "Head of Department 2", category: "technical", classGroup: "5B" },
+        { name: "NUR ZULAIKA BINTI MOHD KAMARUL AZLAN", role: "Committee Member", category: "technical", classGroup: "5C" },
+        { name: "ABDUL BASSIT BIN SASHIM@HASHIM", role: "Committee Member", category: "technical", classGroup: "5A" },
+        { name: "NUR AINA FATINI BINTI NASRUDDIN", role: "Committee Member", category: "technical", classGroup: "5C" },
+        { name: "NUR NADIA BINTI MOHD ROSLAN", role: "Committee Member", category: "technical", classGroup: "5C" },
+
+        // Special Task & Hospitality
+        { name: "AMMAR A'FIF BIN MD A'FIFULLAH", role: "Special Task Member", category: "hospitality", classGroup: "5C" },
+        { name: "ARIEQ SHAFI BIN NOR ADNAN", role: "Special Task Member", category: "hospitality", classGroup: "5B" }
       ]
     },
-    {
-      id: "creative",
-      label: "Creative Team",
-      departmentName: "Creative Team",
-      head1: { name: "Aslina", role: "Head of Department 1" },
-      head2: { name: "Nur Ain Dayana binti Mohd Fadil", role: "Head of Department 2" },
-      members: [
-        "Qurratu Aini binti Che Mohd Shahril",
-        "Nurul Syahira binti Afzanizam",
-        "Nik Nur Alyaa binti Nik Mohamed",
-        "Nur Atiqah Natasya binti Abd Samad",
-        "Nurr Edrinna binti Junaidi",
-        "Nur Fazlina binti Amil Hasli"
-      ]
-    },
-    {
-      id: "media-pub",
-      label: "Media & Publicity",
-      departmentName: "Media and Publicity",
-      head1: { name: "Nursyaziyah Syazana binti Ahmad", role: "Head of Department 1" },
-      head2: { name: "Nureen Batrisyia Irdina binti Sham Mohd", role: "Head of Department 2" },
-      members: [
-        "Auni Syafiah binti Mohd Azmizan",
-        "Arissa binti Ahmad Khairul",
-        "Ain Zulfa binti Zainizam",
-        "Muhammad Danish Aiman bin Mohd Zuki",
-        "Naufal Muammar bin Zaiful Hizam"
-      ]
-    },
-    {
-      id: "logistics",
-      label: "Logistics",
-      departmentName: "Logistics",
-      head1: { name: "Ahmad Firdaus bin Abdul Rahman", role: "Head of Department 1" },
-      head2: { name: "Nurfarahin binti Mohamad Zaidi", role: "Head of Department 2" },
-      members: [
-        "Muhammad Naim bin Azizul Rahman",
-        "Aiman Danish Iskandar bin Mohd Zul Iskandar",
-        "Siti Nadiah binti Mazlan"
-      ]
-    },
-    {
-      id: "sponsorship",
-      label: "Sponsorship & Partnership",
-      departmentName: "Sponsorship and Partnership",
-      head1: { name: "Nur Anis Liyana binti Mat Aris", role: "Head of Department 1" },
-      head2: { name: "Ain Najihah binti Khabil", role: "Head of Department 2" },
-      members: [
-        "Syasya Qistina binti Mohd Hairul Nizam",
-        "Akmal Nabilah binti Sarafuddin",
-        "Fatin Najiha binti Ali Sharifuddin",
-        "Nurin Isabella binti Zulkapli",
-        "Muhammad Haikal bin Yuri Azhar",
-        "Nur Alia Maisarah binti Ahmad Kamal",
-        "Ahmad Haziq bin Rosely"
-      ]
-    },
-    {
-      id: "technical",
-      label: "Technical",
-      departmentName: "Technical",
-      head1: { name: "Fatin Hana Solehah binti Shuhardi", role: "Head of Department 1" },
-      head2: { name: "Muhammad Haziq bin Khairul Anuar", role: "Head of Department 2" },
-      members: [
-        "Nur Zulaika binti Mohd Kamarul Azlan",
-        "Abdul Bassit bin Sashim@Hashim",
-        "Nur Aina Fatini binti Nasruddin",
-        "Nur Nadia binti Mohd Roslan"
-      ]
-    },
-    {
-      id: "hospitality",
-      label: "Special Task & Hospitality",
-      departmentName: "Special Task and Hospitality",
-      head1: null,
-      head2: null,
-      members: [
-        "Ammar A'fif bin Md A'fifullah",
-        "Arieq Shafi bin Nor Adnan"
-      ]
-    }
-  ]
-};
     editorial: {
       advisor: {
         role: "Editorial Advisor",
-        name: "AZLINAWATI NGAINON",
+        name: "PUAN AZLINAWATI BINTI NGAINON",
         image: "assets/advisor.jpg"
       },
       subtabs: [
@@ -197,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "english-desk", label: "English Section" },
         { id: "infographics-social", label: "Infographics and Social Media" },
         { id: "creative-multimedia-dept", label: "Creative and Multimedia" },
-        { id: "podcast-broadcast", label: "Podcast Team" }
+        { id: "podcast-team", label: "Podcast Team" }
       ],
       members: [
         // Editorial High Committee
