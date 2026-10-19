@@ -54,22 +54,24 @@ body {
 }
 
 .brand-logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--ci-burgundy);
-  background-color: var(--ci-light-blue);
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
+  display: block;
 }
 
 .brand-text {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .brand-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.55rem;
   letter-spacing: 1px;
   color: var(--ci-burgundy);
   line-height: 1;
@@ -80,7 +82,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.8px;
   color: var(--ci-muted);
-  margin-top: 3px;
+  margin-top: 4px;
 }
 
 .nav-links {
