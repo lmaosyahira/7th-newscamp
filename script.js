@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Website Team
         { name: "NURUL SYAHIRA BINTI AFZANIZAM", role: "Website Editor (HOD)", category: "website-team", classGroup: "5A" },
-        { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Content Editor", category: "website-team", classGroup: "5C" },
+        { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Content Editor", category: "website-team", classGroup: "5B" },
         { name: "MUHAMMAD FARHAN BIN RAMLAN", role: "Multimedia Editor", category: "website-team", classGroup: "5B" },
         { name: "SYAZWANI ATHIRAH BINTI HASNAN", role: "Multimedia Editor", category: "website-team", classGroup: "5C" },
 
@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Infographics and Social Media
         { name: "NURSYAZIYAH SYAZANA BINTI AHMAD", role: "Social Media Editor (HOD)", category: "infographics-social", classGroup: "5B" },
         { name: "QURRATU AINI BINTI CHE MOHD SHAHRIL", role: "Social Media Team", category: "infographics-social", classGroup: "5A" },
-        { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Social Media Team", category: "infographics-social", classGroup: "5B" },
+        { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Social Media Team", category: "infographics-social", classGroup: "5C" },
         { name: "ARISSA BINTI AHMAD KHAIRUL", role: "Social Media Team", category: "infographics-social", classGroup: "5C" },
         { name: "NUR ZULAIKA BINTI MOHD KAMARUL AZLAN", role: "Infographic Editor (HOD)", category: "infographics-social", classGroup: "5C" },
         { name: "NUREEN BATRISYIA IRDINA BINTI MOHD SHAM", role: "Assistant Infographic Editor", category: "infographics-social", classGroup: "5C" },
