@@ -538,3 +538,22 @@ body {
   .pill-switcher { width: 100%; }
   .main-tab-btn { flex: 1; padding: 10px 12px; font-size: 0.75rem; text-align: center; }
 }
+
+/* Tab Visibility Rules */
+.tab-page {
+  display: none;
+}
+
+.tab-page.active {
+  display: block;
+}
+
+/* Hide all tabs by default */
+.tab-page {
+  display: none;
+}
+
+/* Only show the active tab */
+.tab-page.active {
+  display: block;
+}

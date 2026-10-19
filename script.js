@@ -20,39 +20,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
+// ==========================================
   // 2. TAB PAGE ROUTING (SWITCH TABS ON CLICK)
   // ==========================================
   const navItems = document.querySelectorAll('.nav-item');
   const tabPages = document.querySelectorAll('.tab-page');
 
+  function switchTab(targetId) {
+    // 1. Hide all pages
+    tabPages.forEach(page => page.classList.remove('active'));
+
+    // 2. Deactivate all navbar links
+    navItems.forEach(item => item.classList.remove('active'));
+
+    // 3. Show target page
+    const targetPage = document.getElementById(targetId);
+    if (targetPage) {
+      targetPage.classList.add('active');
+    }
+
+    // 4. Highlight clicked navbar link
+    const activeLink = document.querySelector(`.nav-item[data-tab="${targetId}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  }
+
+  // Attach click listener to each nav link
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
-      e.preventDefault();
-
-      const href = item.getAttribute('href');
-      if (!href || !href.startsWith('#')) return;
-
-      const targetTabId = href.replace('#', '');
-      const targetPage = document.getElementById(targetTabId);
-
-      if (targetPage) {
-        navItems.forEach(nav => nav.classList.remove('active'));
-        item.classList.add('active');
-
-        tabPages.forEach(page => page.classList.remove('active'));
-        targetPage.classList.add('active');
-
-        if (menuToggle && navLinks) {
-          menuToggle.classList.remove('is-active');
-          navLinks.classList.remove('open');
-        }
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+      e.preventDefault(); // Prevents jumping or breaking
+      const targetId = item.getAttribute('data-tab');
+      if (targetId) {
+        switchTab(targetId);
+        window.location.hash = targetId;
       }
     });
   });
 
+  // Load correct tab on page refresh if URL contains a hash
+  const initialHash = window.location.hash.replace('#', '');
+  if (initialHash && document.getElementById(initialHash)) {
+    switchTab(initialHash);
+  } else {
+    switchTab('tab-home');
+  }
+  
   // ==========================================
   // 3. ORGANISATIONAL CHART DATABASE
   // ==========================================
