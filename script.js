@@ -1,6 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-  // Global Tab Switching Function (Accessible from HTML and Nav)
+ // Global Tab Switching Function (Accessible from HTML and Nav)
 window.switchTab = function(targetId) {
   if (!targetId) return;
 
