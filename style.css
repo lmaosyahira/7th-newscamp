@@ -796,15 +796,99 @@ body {
   border-radius: 9999px;
 }
 
-/* Footer */
+/* Footer & Social Media Directory */
 .footer {
   margin-top: auto;
   background-color: var(--ci-white);
-  border-top: 1px solid var(--ci-light-blue);
-  padding: 1.5rem;
+  border-top: 2px solid var(--ci-light-blue);
+  padding: 2.5rem 1.5rem 2rem;
   text-align: center;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.socials-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--ci-burgundy);
+}
+
+.social-links-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 700;
+  border: 1px solid rgba(121, 4, 10, 0.18);
+  background-color: var(--ci-bg);
+  color: var(--ci-dark-text);
+  transition: all 0.25s ease;
+}
+
+.social-icon {
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Individual Brand Accent Hover States */
+.tiktok-btn:hover {
+  background-color: #010101;
+  color: #ffffff;
+  border-color: #010101;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+}
+
+.instagram-btn:hover {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(220, 39, 67, 0.25);
+}
+
+.youtube-btn:hover {
+  background-color: #ff0000;
+  color: #ffffff;
+  border-color: #ff0000;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 14px rgba(255, 0, 0, 0.25);
+}
+
+.footer-bottom p {
   font-size: 0.82rem;
   color: var(--ci-muted);
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.25rem;
+  margin: 0;
 }
 
 /* ==========================================
