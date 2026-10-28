@@ -463,3 +463,49 @@ window.closeNewsArticle = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 };
+
+// ==========================================
+// 7. NEWS+ SUB-ROUTING
+// ==========================================
+window.openNewsPlusArticle = function(id) {
+  const dirView = document.getElementById('newsplus-directory-view');
+  const articleView = document.getElementById('newsplus-article-view');
+  if (dirView && articleView) {
+    dirView.style.display = 'none';
+    articleView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+window.closeNewsPlusArticle = function() {
+  const dirView = document.getElementById('newsplus-directory-view');
+  const articleView = document.getElementById('newsplus-article-view');
+  if (dirView && articleView) {
+    articleView.style.display = 'none';
+    dirView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+// ==========================================
+// 8. PODCAST SUB-ROUTING
+// ==========================================
+window.openPodcastEpisode = function(id) {
+  const dirView = document.getElementById('podcast-directory-view');
+  const episodeView = document.getElementById('podcast-episode-view');
+  if (dirView && episodeView) {
+    dirView.style.display = 'none';
+    episodeView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+window.closePodcastEpisode = function() {
+  const dirView = document.getElementById('podcast-directory-view');
+  const episodeView = document.getElementById('podcast-episode-view');
+  if (dirView && episodeView) {
+    episodeView.style.display = 'none';
+    dirView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
