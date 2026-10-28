@@ -30,37 +30,47 @@ document.addEventListener('DOMContentLoaded', () => {
   window.switchTab = function(targetId) {
     if (!targetId) return;
 
+    // Normalise ID: remove any leading #
+    const cleanId = targetId.replace(/^#/, '');
+
+    // 1. Hide all tab sections
     tabPages.forEach(page => {
       page.classList.remove('active');
-      page.style.display = 'none';
-      page.style.opacity = '0';
+      page.removeAttribute('style'); // Clear any stuck inline styles
     });
 
+    // 2. Remove active underline from all navbar links
     navItems.forEach(item => item.classList.remove('active'));
 
-    const targetPage = document.getElementById(targetId);
+    // 3. Find and activate target section
+    const targetPage = document.getElementById(cleanId);
     if (targetPage) {
       targetPage.classList.add('active');
-      targetPage.style.display = 'block';
-      setTimeout(() => { targetPage.style.opacity = '1'; }, 10);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    const matchingLink = document.querySelector(`.nav-item[data-tab="${targetId}"]`) || 
-                          document.querySelector(`.nav-item[href="#${targetId}"]`);
+    // 4. Highlight matching navbar link
+    const matchingLink = document.querySelector(`.nav-item[data-tab="${cleanId}"]`) || 
+                         document.querySelector(`.nav-item[href="#${cleanId}"]`);
     if (matchingLink) {
       matchingLink.classList.add('active');
     }
 
+    // 5. Close mobile drawer if open
     if (navLinks && menuToggle) {
       navLinks.classList.remove('open');
       menuToggle.classList.remove('is-active');
     }
   };
 
+  // Nav item click handler
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      const targetId = item.getAttribute('data-tab') || item.getAttribute('href').replace('#', '');
+      const href = item.getAttribute('href') || '';
+      const dataTab = item.getAttribute('data-tab') || '';
+      const targetId = dataTab || href.replace('#', '');
+
       if (targetId) {
         window.switchTab(targetId);
         history.pushState(null, null, `#${targetId}`);
@@ -68,13 +78,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  const initialHash = window.location.hash.replace('#', '');
-  if (initialHash && document.getElementById(initialHash)) {
-    window.switchTab(initialHash);
-  } else {
-    window.switchTab('tab-home');
-  }
+  // Handle direct loads or browser refresh with hash
+  window.addEventListener('load', () => {
+    const initialHash = window.location.hash.replace('#', '');
+    if (initialHash && document.getElementById(initialHash)) {
+      window.switchTab(initialHash);
+    } else {
+      window.switchTab('tab-home');
+    }
+  });
 
+  // Handle browser back/forward buttons
+  window.addEventListener('popstate', () => {
+    const currentHash = window.location.hash.replace('#', '');
+    if (currentHash && document.getElementById(currentHash)) {
+      window.switchTab(currentHash);
+    } else {
+      window.switchTab('tab-home');
+    }
+  });
   // ==========================================
   // 3. ORGANISATIONAL CHART DATABASE
   // ==========================================
