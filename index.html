@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NewsCamp 7.0 | The 54th Journalism e-Colloquium</title>
 
-  <!-- Google Fonts: Anton (CI Display) & Montserrat (Body & Nav) -->
+  <!-- Google Fonts: Anton & Montserrat -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -18,12 +18,12 @@
   <header class="navbar">
     <div class="nav-container">
       <a href="#tab-home" class="brand">
-        <img src="assets/logo.png" alt="NewsCamp Logo" class="brand-logo">
+        <img src="assets/logo.png" alt="NewsCamp Logo" class="brand-logo" onerror="this.style.display='none'">
         <div class="brand-text">
-         <span class="brand-title">#NEWSCAMP7.0</span>
+          <span class="brand-title">#NEWSCAMP7.0</span>
           <span class="brand-subtitle">THE 54TH e-COLLOQUIUM</span>
-       </div>
-    </a>
+        </div>
+      </a>
 
       <!-- Mobile Hamburger Toggle -->
       <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
   </header>
 
   <!-- Main Container -->
-<main class="main-content">
+  <main class="main-content">
     
     <!-- 1. HOME TAB -->
     <section id="tab-home" class="tab-page active">
@@ -65,26 +65,60 @@
 
       <div class="page-container">
         <div class="feature-grid">
-          <div class="feature-card">
+          <!-- Card 1: e-Colloquium 54 -->
+          <div class="feature-card event-card" onclick="openEventModal('colloquium')">
             <span class="feature-badge">Event Highlight</span>
             <h3>e-Colloquium 54</h3>
-            <p>Engaging sessions bringing together students, academic voices, and seasoned industry journalists to discuss solutions journalism.</p>
+            <p>Sesi perkongsian wacana ilmiah bersama barisan wartawan industri dan ahli akademik membincangkan naratif <em>solutions journalism</em>.</p>
+            <div class="card-action">
+              <span class="action-link">Lihat Sorotan & Ringkasan Acara &rarr;</span>
+            </div>
           </div>
-          <div class="feature-card">
-            <span class="feature-badge">Publication</span>
-            <h3>News & Feature Hub</h3>
-            <p>Explore articles, long-form editorial reporting, and bilingual coverage crafted by our editorial desks.</p>
+
+          <!-- Card 2: Media Workshop -->
+          <div class="feature-card event-card" onclick="openEventModal('workshop')">
+            <span class="feature-badge">Skill Building</span>
+            <h3>Media Workshop</h3>
+            <p>Bengkel kemahiran praktikal memfokuskan teknik pelaporan siasatan, visual data berita, dan etika penerbitan digital.</p>
+            <div class="card-action">
+              <span class="action-link">Lihat Sorotan & Ringkasan Acara &rarr;</span>
+            </div>
           </div>
-          <div class="feature-card">
-            <span class="feature-badge">Broadcast</span>
-            <h3>NewsCamp Podcast</h3>
-            <p>Insightful conversations, student reflections, and behind-the-scenes discussions on contemporary media issues.</p>
+
+          <!-- Card 3: Publication Directory with 3 Inner Links -->
+          <div class="feature-card publication-hub-card">
+            <span class="feature-badge">Publication Hub</span>
+            <h3>Penerbitan & Siaran</h3>
+            <p>Pusat himpunan karya berita, rencana mendalam, serta audio siar rasmi kendalian bilik berita NewsCamp 7.0.</p>
+            
+            <div class="pub-quick-links">
+              <a href="#tab-news" class="pub-link-btn" onclick="switchTab('tab-news')">
+                <span>Berita Semasa (News)</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+              <a href="#tab-news-plus" class="pub-link-btn" onclick="switchTab('tab-news-plus')">
+                <span>Laporan Khas (News+)</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+              <a href="#tab-podcast" class="pub-link-btn" onclick="switchTab('tab-podcast')">
+                <span>Audio Siar (Podcast)</span>
+                <span class="arrow">&rarr;</span>
+              </a>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- 2. ORGANISATIONAL STRUCTURE TAB (Keep your working code) -->
+    <!-- Modal Popup for Event Highlights -->
+    <div id="event-modal" class="event-modal">
+      <div class="modal-content">
+        <button class="modal-close" onclick="closeEventModal()">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <!-- 2. ORGANISATIONAL STRUCTURE TAB -->
     <section id="tab-org-chart" class="tab-page">
       <div class="org-section">
         <div class="org-header">
@@ -141,49 +175,30 @@
       </div>
     </section>
 
-    <!-- 4. NEWS TAB -->
+    <!-- 4. NEWS TAB (With Complete House Style Dummy Article) -->
     <section id="tab-news" class="tab-page">
-      <div class="hero-section">
-        <div class="hero-tagline">LATEST COVERAGE</div>
-        <h1 class="hero-title">NEWS</h1>
-        <p class="hero-subtext">Current reports, press releases, and timely news published by the NewsCamp 7.0 team.</p>
-      </div>
-      <div class="page-container">
-        <p style="text-align: center; color: #64748b;">Articles and reports will be updated here soon.</p>
-      </div>
-    </section>
+      <div class="page-container article-wrapper">
+        
+        <!-- Article Header -->
+        <header class="article-header">
+          <div class="article-meta-top">
+            <span class="feature-badge">LIPUTAN KHAS</span>
+            <span class="article-read-time">4 Minit Bacaan</span>
+          </div>
 
-    <!-- 5. NEWS+ TAB -->
-    <section id="tab-news-plus" class="tab-page">
-      <div class="hero-section">
-        <div class="hero-tagline">IN-DEPTH JOURNALISM</div>
-        <h1 class="hero-title">NEWS+</h1>
-        <p class="hero-subtext">Exclusive long-form investigations, multimedia features, and comprehensive special reports.</p>
-      </div>
-      <div class="page-container">
-        <p style="text-align: center; color: #64748b;">Exclusive feature stories will be featured here.</p>
-      </div>
-    </section>
+          <h1 class="article-headline">MENEROKA WACANA BAHARU: WARTAWAN MUDA PERKASA 'SOLUTIONS JOURNALISM' MENJELANG e-COLLOQUIUM 54</h1>
+          
+          <p class="article-deck">
+            Mengangkat isu berimpak tinggi melangkaui pelaporan masalah konvensional ke arah naratif berpaksikan penyelesaian dan pemerkasaan komuniti tempatan.
+          </p>
 
-    <!-- 6. PODCAST TAB -->
-    <section id="tab-podcast" class="tab-page">
-      <div class="hero-section">
-        <div class="hero-tagline">AUDIO & BROADCAST</div>
-        <h1 class="hero-title">PODCAST</h1>
-        <p class="hero-subtext">Tune into conversations with our journalists, guest speakers, and media practitioners.</p>
-      </div>
-      <div class="page-container">
-        <p style="text-align: center; color: #64748b;">Podcast episodes and audio recordings are coming soon.</p>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <p>© 2026 #NewsCamp7.0 | The 54th Journalism e-Colloquium. All rights reserved.</p>
-  </footer>
-
-  <script src="script.js" defer></script>
-</body>
-</html>
+          <div class="article-byline-box">
+            <div class="author-avatar-wrap">
+              <div class="author-avatar-placeholder">NS</div>
+            </div>
+            <div class="author-details">
+              <span class="author-name">Laporan oleh Nurul Syahira binti Afzanizam</span>
+              <span class="article-dateline">SHAH ALAM | 28 OKTOBER 2026</span>
+            </div>
+          </div>
+        </header>
