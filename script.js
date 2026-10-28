@@ -438,3 +438,28 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modal) modal.classList.remove('active');
   };
 });
+
+// ==========================================
+// 6. NEWS ARTICLE SUB-ROUTING
+// ==========================================
+window.openNewsArticle = function(articleId) {
+  const dirView = document.getElementById('news-directory-view');
+  const articleView = document.getElementById('news-article-view');
+
+  if (dirView && articleView) {
+    dirView.style.display = 'none';
+    articleView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
+
+window.closeNewsArticle = function() {
+  const dirView = document.getElementById('news-directory-view');
+  const articleView = document.getElementById('news-article-view');
+
+  if (dirView && articleView) {
+    articleView.style.display = 'none';
+    dirView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+};
