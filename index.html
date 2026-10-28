@@ -343,28 +343,284 @@
 
     </section>
 
-    <!-- 5. NEWS+ TAB -->
+<!-- 5. NEWS+ TAB (INVESTIGATIVE & SPECIAL REPORTS) -->
     <section id="tab-news-plus" class="tab-page">
-      <div class="hero-section" style="text-align: center;">
-        <div class="hero-tagline" style="text-align: center;">IN-DEPTH JOURNALISM</div>
-        <h1 class="hero-title" style="text-align: center;">NEWS+</h1>
-        <p class="hero-subtext" style="text-align: center; margin-left: auto; margin-right: auto;">Exclusive long-form investigations, multimedia features, and comprehensive special reports.</p>
+      
+      <!-- VIEW A: Main News+ Directory -->
+      <div id="newsplus-directory-view">
+        <div class="hero-section" style="text-align: center;">
+          <div class="hero-tagline">IN-DEPTH JOURNALISM</div>
+          <h1 class="hero-title">NEWS+ SPECIAL REPORTS</h1>
+          <p class="hero-subtext">Laporan siasatan eksklusif, analisis data mendalam, dan naratif berimpak tinggi membongkar isu mustahak masyarakat.</p>
+        </div>
+
+        <div class="page-container">
+          <div class="news-cards-grid">
+            
+            <!-- News+ Card 1 (Clickable) -->
+            <article class="news-card" onclick="openNewsPlusArticle('newsplus-1')">
+              <div class="news-card-thumb">
+                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=800&q=80" alt="Special Investigation">
+                <span class="news-card-badge">Laporan Siasatan</span>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">28 OKTOBER 2026</span>
+                  <span class="meta-divider">•</span>
+                  <span class="meta-read">8 Minit Bacaan</span>
+                </div>
+                <h3 class="news-card-title">Jurang Digital Luar Bandar: Menilai Realiti Inisiatif Keterhubungan Generasi Baharu</h3>
+                <p class="news-card-excerpt">Penyelidikan lapangan komprehensif mengkaji akses jaringan jalur lebar dan cabaran pendidikan digital komuniti pinggir bandar.</p>
+                <div class="news-card-author">
+                  <span class="author-label">Bilik Berita Siasatan NewsCamp</span>
+                  <span class="read-more-arrow">&rarr;</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- News+ Card 2 (Placeholder) -->
+            <article class="news-card news-card-placeholder">
+              <div class="news-card-thumb placeholder-thumb">
+                <div class="placeholder-tag">Akan Datang</div>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">Oktober 2026</span>
+                </div>
+                <h3 class="news-card-title">Krisis Keselamatan Makanan &amp; Adaptasi Komuniti Tani Bandar</h3>
+                <p class="news-card-excerpt">Laporan data analitikal mengenai cabaran rantaian bekalan makanan domestik serta solusi pertanian mampan.</p>
+                <span class="coming-soon-label">Diterbitkan Segera</span>
+              </div>
+            </article>
+
+            <!-- News+ Card 3 (Placeholder) -->
+            <article class="news-card news-card-placeholder">
+              <div class="news-card-thumb placeholder-thumb">
+                <div class="placeholder-tag">Akan Datang</div>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">Oktober 2026</span>
+                </div>
+                <h3 class="news-card-title">Pendedahan Eksklusif: Jejak Karbon dan Transisi Tenaga Hijau</h3>
+                <p class="news-card-excerpt">Siri dokumentasi visual mengenai komitmen industri tenaga boleh baharu di Malaysia.</p>
+                <span class="coming-soon-label">Diterbitkan Segera</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
       </div>
-      <div class="page-container">
-        <p style="text-align: center; color: #64748b;">Exclusive feature stories will be featured here.</p>
+
+      <!-- VIEW B: News+ Full Feature Reader -->
+      <div id="newsplus-article-view" style="display: none;">
+        <div class="page-container article-wrapper">
+          
+          <div class="article-top-nav">
+            <button class="back-btn" onclick="closeNewsPlusArticle()">
+              <span class="arrow">&larr;</span> Kembali ke Semua Laporan Khas
+            </button>
+          </div>
+
+          <header class="article-header">
+            <div class="article-meta-top">
+              <span class="feature-badge">LAPORAN SIASATAN</span>
+              <span class="article-read-time">8 MINIT BACAAN</span>
+            </div>
+
+            <h1 class="article-headline">Jurang Digital Luar Bandar: Menilai Realiti Inisiatif Keterhubungan Generasi Baharu</h1>
+            
+            <p class="article-deck">
+              Penyelidikan lapangan komprehensif mengkaji akses jaringan jalur lebar dan cabaran pendidikan digital komuniti pinggir bandar.
+            </p>
+
+            <div class="article-byline-box">
+              <div class="author-avatar-wrap">
+                <div class="author-avatar-placeholder">NC</div>
+              </div>
+              <div class="author-details">
+                <span class="author-name">Laporan Khas Bilik Berita NewsCamp 7.0</span>
+                <span class="article-dateline">SHAH ALAM | 28 OKTOBER 2026</span>
+              </div>
+            </div>
+          </header>
+
+          <figure class="article-figure">
+            <div class="ratio-16-9">
+              <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1280&q=80" 
+                   alt="Menara telekomunikasi dan peta data" 
+                   class="article-img">
+            </div>
+            <figcaption class="article-caption">
+              Visualisasi pemetaan menara pemancar dan kualiti perkhidmatan liputan internet di kawasan sasaran.
+              <span class="photo-credit">FOTO: DESK MULTIMEDIA NEWSCAMP 7.0</span>
+            </figcaption>
+          </figure>
+
+          <article class="article-body">
+            <p class="lead-paragraph">
+              Keterhubungan digital bukan lagi sekadar kemudahan tambahan, sebaliknya merupakan hak asasi pembelajaran dan pemangkin ekonomi komuniti setempat.
+            </p>
+
+            <p>
+              Menerusi penyelidikan data yang dijalankan bersama komuniti, pelaporan ini mendapati jurang akses masih ketara di beberapa lokaliti sasaran meskipun pelbagai projek penaiktarafan telah dirangka. 
+            </p>
+
+            <blockquote class="article-quote">
+              "Merapatkan jurang teknologi menuntut bukan sahaja menara fizikal, malah ekosistem sokongan peranti dan literasi digital yang inklusif."
+            </blockquote>
+
+            <h2>Analisis Infrastruktur dan Keperluan Sebenar Komuniti</h2>
+            <p>
+              Wartawan penyiasat NewsCamp menemu bual penduduk tempatan, wakil komuniti pendidik, serta jurutera telekomunikasi bagi mendapatkan gambaran holistik tentang cabaran teknikal di peringkat akar umbi.
+            </p>
+          </article>
+
+          <div class="article-footer-tags">
+            <span class="tag">#NewsPlus</span>
+            <span class="tag">#InvestigativeJournalism</span>
+            <span class="tag">#DigitalInclusion</span>
+          </div>
+
+        </div>
       </div>
+
     </section>
 
-    <!-- 6. PODCAST TAB -->
+    <!-- 6. PODCAST TAB (EPISODES & MEDIA PLAYER) -->
     <section id="tab-podcast" class="tab-page">
-      <div class="hero-section" style="text-align: center;">
-        <div class="hero-tagline" style="text-align: center;">AUDIO & BROADCAST</div>
-        <h1 class="hero-title" style="text-align: center;">PODCAST</h1>
-        <p class="hero-subtext" style="text-align: center; margin-left: auto; margin-right: auto;">Tune into conversations with our journalists, guest speakers, and media practitioners.</p>
+      
+      <!-- VIEW A: Main Podcast Directory -->
+      <div id="podcast-directory-view">
+        <div class="hero-section" style="text-align: center;">
+          <div class="hero-tagline">AUDIO &amp; BROADCAST</div>
+          <h1 class="hero-title">NEWSCAMP PODCAST</h1>
+          <p class="hero-subtext">Dengarkan diskusi eksklusif, perkongsian di sebalik tabir bilik berita, dan kupasan isu semasa bersama hos jemputan.</p>
+        </div>
+
+        <div class="page-container">
+          <div class="news-cards-grid">
+            
+            <!-- Podcast Episode Card 1 (Clickable) -->
+            <article class="news-card" onclick="openPodcastEpisode('podcast-ep1')">
+              <div class="news-card-thumb">
+                <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?auto=format&fit=crop&w=800&q=80" alt="Podcast Studio">
+                <span class="news-card-badge">Episod 01</span>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">28 OKTOBER 2026</span>
+                  <span class="meta-divider">•</span>
+                  <span class="meta-read">24 Minit Audio</span>
+                </div>
+                <h3 class="news-card-title">Suara Meja Redaksi: Cabaran &amp; Inspirasi Menjelang e-Colloquium 54</h3>
+                <p class="news-card-excerpt">Bual bicara santai bersama kepimpinan pelajar membincangkan evolusi penerbitan akhbar ke portal digital NewsCamp 7.0.</p>
+                <div class="news-card-author">
+                  <span class="author-label">Dengar Episod Penuh</span>
+                  <span class="read-more-arrow">&rarr;</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Podcast Episode Card 2 (Placeholder) -->
+            <article class="news-card news-card-placeholder">
+              <div class="news-card-thumb placeholder-thumb">
+                <div class="placeholder-tag">Episod 02</div>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">November 2026</span>
+                </div>
+                <h3 class="news-card-title">Kewartawanan Penyelesaian: Mengapa Pendekatan Ini Kian Dituntut?</h3>
+                <p class="news-card-excerpt">Sesi bual bicara bersama panel pensyarah penasihat dan wartawan kanan industri.</p>
+                <span class="coming-soon-label">Akan Bersiaran</span>
+              </div>
+            </article>
+
+            <!-- Podcast Episode Card 3 (Placeholder) -->
+            <article class="news-card news-card-placeholder">
+              <div class="news-card-thumb placeholder-thumb">
+                <div class="placeholder-tag">Episod 03</div>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">November 2026</span>
+                </div>
+                <h3 class="news-card-title">Di Sebalik Tabir Pengurusan Liputan &amp; Penyelidikan Lapangan</h3>
+                <p class="news-card-excerpt">Pengalaman wartawan muda turun ke lapangan mendepani cabaran verifikasi dan temu bual responden.</p>
+                <span class="coming-soon-label">Akan Bersiaran</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
       </div>
-      <div class="page-container">
-        <p style="text-align: center; color: #64748b;">Podcast episodes and audio recordings are coming soon.</p>
+
+      <!-- VIEW B: Podcast Player & Episode Details -->
+      <div id="podcast-episode-view" style="display: none;">
+        <div class="page-container article-wrapper">
+          
+          <div class="article-top-nav">
+            <button class="back-btn" onclick="closePodcastEpisode()">
+              <span class="arrow">&larr;</span> Kembali ke Semua Episod
+            </button>
+          </div>
+
+          <header class="article-header">
+            <div class="article-meta-top">
+              <span class="feature-badge">AUDIO PODCAST • EP 01</span>
+              <span class="article-read-time">24 MINIT</span>
+            </div>
+
+            <h1 class="article-headline">Suara Meja Redaksi: Cabaran &amp; Inspirasi Menjelang e-Colloquium 54</h1>
+            
+            <p class="article-deck">
+              Bual bicara santai bersama kepimpinan pelajar membincangkan evolusi penerbitan akhbar ke portal digital NewsCamp 7.0.
+            </p>
+
+            <div class="article-byline-box">
+              <div class="author-avatar-wrap">
+                <div class="author-avatar-placeholder">POD</div>
+              </div>
+              <div class="author-details">
+                <span class="author-name">Dihoskan oleh Unit Audio Siar NewsCamp</span>
+                <span class="article-dateline">STUDIO MEDCOMM | 28 OKTOBER 2026</span>
+              </div>
+            </div>
+          </header>
+
+          <!-- Audio Player Block -->
+          <div class="podcast-player-box">
+            <div class="podcast-player-header">
+              <span class="player-label">AUDIO STREAMING</span>
+              <span class="player-format">MP3 • STEREO</span>
+            </div>
+            <audio controls style="width: 100%; margin-top: 10px;">
+              <source src="" type="audio/mpeg">
+              Pelayar web anda tidak menyokong elemen audio.
+            </audio>
+            <p class="player-note">*Fail audio rasmi akan dimuat naik ke pelayan menjelang tarikh siaran rasmi.</p>
+          </div>
+
+          <article class="article-body" style="margin-top: 2.5rem;">
+            <h2>Nota Episod &amp; Sorotan Perbincangan</h2>
+            <p>
+              Dalam episod pembukaan ini, hos membincangkan proses transformasi bilik berita mahasiswa dalam mengintegrasikan penyelidikan multimedia, penulisan rencana dwibahasa, serta peranan kepimpinan redaksi dalam memastikan tarikh akhir penerbitan dipatuhi.
+            </p>
+            <p>
+              Kupasan turut merangkumi temu bual eksklusif mengenai aspirasi penganjuran NewsCamp edisi ketujuh ini sebagai platform menyuarakan solusi mampan terhadap cabaran semasa.
+            </p>
+          </article>
+
+          <div class="article-footer-tags">
+            <span class="tag">#NewsCampPodcast</span>
+            <span class="tag">#Episode01</span>
+            <span class="tag">#MediaUiTM</span>
+          </div>
+
+        </div>
       </div>
+
     </section>
 
   </main>
