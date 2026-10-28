@@ -176,92 +176,171 @@
       </div>
     </section>
 
-    <!-- 4. NEWS TAB (With Complete House Style Dummy Article) -->
+   <!-- 4. NEWS TAB -->
     <section id="tab-news" class="tab-page">
-      <div class="page-container article-wrapper">
-        
-        <!-- Article Header -->
-        <header class="article-header">
-          <div class="article-meta-top">
-            <span class="feature-badge">LIPUTAN KHAS</span>
-            <span class="article-read-time">4 Minit Bacaan</span>
-          </div>
+      
+      <!-- VIEW A: Main News Directory -->
+      <div id="news-directory-view">
+        <div class="hero-section" style="text-align: center;">
+          <div class="hero-tagline">LATEST COVERAGE</div>
+          <h1 class="hero-title">NEWS & DESK REPORTS</h1>
+          <p class="hero-subtext">Himpunan berita semasa, laporan lapangan, dan perkembangan terkini NewsCamp 7.0 garapan sidang redaksi bilik berita mahasiswa.</p>
+        </div>
 
-          <h1 class="article-headline">MENEROKA WACANA BAHARU: WARTAWAN MUDA PERKASA 'SOLUTIONS JOURNALISM' MENJELANG e-COLLOQUIUM 54</h1>
+        <div class="page-container">
+          <div class="news-cards-grid">
+            
+            <!-- Article Card 1 (Clickable) -->
+            <article class="news-card" onclick="openNewsArticle('article-1')">
+              <div class="news-card-thumb">
+                <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=800&q=80" alt="NewsCamp Colloquium">
+                <span class="news-card-badge">Liputan Khas</span>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">28 OKTOBER 2026</span>
+                  <span class="meta-divider">•</span>
+                  <span class="meta-read">4 Minit Bacaan</span>
+                </div>
+                <h3 class="news-card-title">Meneroka Wacana Baharu: Wartawan Muda Perkasa 'Solutions Journalism' Menjelang e-Colloquium 54</h3>
+                <p class="news-card-excerpt">Mengangkat isu berimpak tinggi melangkaui pelaporan masalah konvensional ke arah naratif berpaksikan penyelesaian dan pemerkasaan komuniti tempatan.</p>
+                <div class="news-card-author">
+                  <span class="author-label">Oleh Nurul Syahira binti Afzanizam</span>
+                  <span class="read-more-arrow">&rarr;</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Placeholder Card 2 for Upcoming Stories -->
+            <article class="news-card news-card-placeholder">
+              <div class="news-card-thumb placeholder-thumb">
+                <div class="placeholder-tag">Akan Datang</div>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">Oktober 2026</span>
+                </div>
+                <h3 class="news-card-title">Liputan Bengkel Kewartawanan Data &amp; Etika Media Digital</h3>
+                <p class="news-card-excerpt">Laporan eksklusif berkaitan modul latihan praktikal wartawan muda UiTM bersama pakar industri.</p>
+                <span class="coming-soon-label">Diterbitkan Segera</span>
+              </div>
+            </article>
+
+            <!-- Placeholder Card 3 for Upcoming Stories -->
+            <article class="news-card news-card-placeholder">
+              <div class="news-card-thumb placeholder-thumb">
+                <div class="placeholder-tag">Akan Datang</div>
+              </div>
+              <div class="news-card-content">
+                <div class="news-card-meta">
+                  <span class="meta-date">Oktober 2026</span>
+                </div>
+                <h3 class="news-card-title">Sorotan Sidang Media &amp; Aspirasi Pengurusan NewsCamp 7.0</h3>
+                <p class="news-card-excerpt">Kenyataan rasmi barisan kepimpinan editorial mengenai hala tuju penulisan berimpak sosial.</p>
+                <span class="coming-soon-label">Diterbitkan Segera</span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- VIEW B: Full Article Reader (Hidden by Default) -->
+      <div id="news-article-view" style="display: none;">
+        <div class="page-container article-wrapper">
           
-          <p class="article-deck">
-            Mengangkat isu berimpak tinggi melangkaui pelaporan masalah konvensional ke arah naratif berpaksikan penyelesaian dan pemerkasaan komuniti tempatan.
-          </p>
-
-          <div class="article-byline-box">
-            <div class="author-avatar-wrap">
-              <div class="author-avatar-placeholder">NS</div>
-            </div>
-            <div class="author-details">
-              <span class="author-name">Laporan oleh Nurul Syahira binti Afzanizam</span>
-              <span class="article-dateline">SHAH ALAM | 28 OKTOBER 2026</span>
-            </div>
+          <!-- Back Navigation Button -->
+          <div class="article-top-nav">
+            <button class="back-btn" onclick="closeNewsArticle()">
+              <span class="arrow">&larr;</span> Kembali ke Semua Berita
+            </button>
           </div>
-        </header>
 
-        <!-- Hero Feature Image (16:9 Ratio Guideline) -->
-        <figure class="article-figure">
-          <div class="ratio-16-9">
-            <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1280&q=80" 
-                 alt="Bilik berita dan diskusi media e-Colloquium 54" 
-                 class="article-img">
-          </div>
-          <figcaption class="article-caption">
-            Wartawan mahasiswa bersiap siaga merangka laporan lapangan berfokuskan isu sosial dan persekitaran sempena pembukaan rasmi NewsCamp 7.0 di UiTM Shah Alam. 
-            <span class="photo-credit">FOTO: UNIT MEDIA & PUBLISITI NEWSCAMP 7.0</span>
-          </figcaption>
-        </figure>
+          <!-- Article Header -->
+          <header class="article-header">
+            <div class="article-meta-top">
+              <span class="feature-badge">LIPUTAN KHAS</span>
+              <span class="article-read-time">4 MINIT BACAAN</span>
+            </div>
 
-        <!-- Article Body -->
-        <article class="article-body">
-          <p class="lead-paragraph">
-            Landskap kewartawanan masa kini menuntut anjakan paradigma daripada sekadar melaporkan kekangan semasa kepada merungkai inisiatif penyelesaian yang mampu memacu tindakan proaktif masyarakat.
-          </p>
+            <!-- Title in Proper Sentence/Title Case -->
+            <h1 class="article-headline">Meneroka Wacana Baharu: Wartawan Muda Perkasa 'Solutions Journalism' Menjelang e-Colloquium 54</h1>
+            
+            <p class="article-deck">
+              Mengangkat isu berimpak tinggi melangkaui pelaporan masalah konvensional ke arah naratif berpaksikan penyelesaian dan pemerkasaan komuniti tempatan.
+            </p>
 
-          <p>
-            Melalui penganjuran edisi ke-54 Journalism e-Colloquium (#NewsCamp 7.0), barisan wartawan muda Universiti Teknologi MARA (UiTM) membuktikan komitmen dalam membawakan pendekatan <em>solutions journalism</em>. Teras ini menekankan analisis berasaskan bukti, ketelusan data, serta respon komuniti terhadap cabaran sosioekonomi tempatan.
-          </p>
+            <div class="article-byline-box">
+              <div class="author-avatar-wrap">
+                <div class="author-avatar-placeholder">NS</div>
+              </div>
+              <div class="author-details">
+                <span class="author-name">Laporan oleh Nurul Syahira binti Afzanizam</span>
+                <span class="article-dateline">SHAH ALAM | 28 OKTOBER 2026</span>
+              </div>
+            </div>
+          </header>
 
-          <blockquote class="article-quote">
-            "Kewartawanan bukan sekadar menjadi cermin yang memantulkan kepincangan masyarakat, malah bertindak sebagai obor yang menerangi jalan penyelesaian."
-          </blockquote>
-
-          <h2>Memperkasa Ketepatan Data dan Integriti Pelaporan</h2>
-          <p>
-            Sesi bengkel intensif yang diadakan sepanjang semester melatih sidang redaksi mendalami teknik verifikasi maklumat, visualisasi data, serta etika penyampaian berita digital. Kerjasama rentas desk memastikan setiap karya mempunyai ketepatan fakta yang kukuh.
-          </p>
-
-          <figure class="article-figure-inline">
-            <div class="ratio-4-3">
-              <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80" 
-                   alt="Perbincangan editorial bersama pensyarah penasihat" 
+          <!-- Hero Feature Image (16:9 Ratio Guideline) -->
+          <figure class="article-figure">
+            <div class="ratio-16-9">
+              <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?auto=format&fit=crop&w=1280&q=80" 
+                   alt="Bilik berita dan diskusi media e-Colloquium 54" 
                    class="article-img">
             </div>
             <figcaption class="article-caption">
-              Perbincangan berkala memastikan garis panduan 'house style' dan keseragaman visual dipatuhi sebelum setiap terbitan disiarkan.
-              <span class="photo-credit">FOTO: NEWSCAMP EDITORIAL BOARD</span>
+              Wartawan mahasiswa bersiap siaga merangka laporan lapangan berfokuskan isu sosial dan persekitaran sempena pembukaan rasmi NewsCamp 7.0 di UiTM Shah Alam. 
+              <span class="photo-credit">FOTO: UNIT MEDIA &amp; PUBLISITI NEWSCAMP 7.0</span>
             </figcaption>
           </figure>
 
-          <p>
-            Dengan pelancaran direktori digital ini, orang ramai dan penggiat media dijemput untuk meneliti hasil penyelidikan dan laporan eksklusif yang dihasilkan sepanjang penganjuran kali ini.
-          </p>
-        </article>
+          <!-- Article Body -->
+          <article class="article-body">
+            <p class="lead-paragraph">
+              Landskap kewartawanan masa kini menuntut anjakan paradigma daripada sekadar melaporkan kekangan semasa kepada merungkai inisiatif penyelesaian yang mampu memacu tindakan proaktif masyarakat.
+            </p>
 
-        <!-- Footer Tags -->
-        <div class="article-footer-tags">
-          <span class="tag">#NewsCamp7.0</span>
-          <span class="tag">#SolutionsJournalism</span>
-          <span class="tag">#eColloquium54</span>
-          <span class="tag">#WartawanUiTM</span>
+            <p>
+              Melalui penganjuran edisi ke-54 Journalism e-Colloquium (#NewsCamp 7.0), barisan wartawan muda Universiti Teknologi MARA (UiTM) membuktikan komitmen dalam membawakan pendekatan <em>solutions journalism</em>. Teras ini menekankan analisis berasaskan bukti, ketelusan data, serta respon komuniti terhadap cabaran sosioekonomi tempatan.
+            </p>
+
+            <blockquote class="article-quote">
+              "Kewartawanan bukan sekadar menjadi cermin yang memantulkan kepincangan masyarakat, malah bertindak sebagai obor yang menerangi jalan penyelesaian."
+            </blockquote>
+
+            <h2>Memperkasa Ketepatan Data dan Integriti Pelaporan</h2>
+            <p>
+              Sesi bengkel intensif yang diadakan sepanjang semester melatih sidang redaksi mendalami teknik verifikasi maklumat, visualisasi data, serta etika penyampaian berita digital. Kerjasama rentas desk memastikan setiap karya mempunyai ketepatan fakta yang kukuh.
+            </p>
+
+            <figure class="article-figure-inline">
+              <div class="ratio-4-3">
+                <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=800&q=80" 
+                     alt="Perbincangan editorial bersama pensyarah penasihat" 
+                     class="article-img">
+              </div>
+              <figcaption class="article-caption">
+                Perbincangan berkala memastikan garis panduan 'house style' dan keseragaman visual dipatuhi sebelum setiap terbitan disiarkan.
+                <span class="photo-credit">FOTO: NEWSCAMP EDITORIAL BOARD</span>
+              </figcaption>
+            </figure>
+
+            <p>
+              Dengan pelancaran direktori digital ini, orang ramai dan penggiat media dijemput untuk meneliti hasil penyelidikan dan laporan eksklusif yang dihasilkan sepanjang penganjuran kali ini.
+            </p>
+          </article>
+
+          <!-- Footer Tags -->
+          <div class="article-footer-tags">
+            <span class="tag">#NewsCamp7.0</span>
+            <span class="tag">#SolutionsJournalism</span>
+            <span class="tag">#eColloquium54</span>
+            <span class="tag">#WartawanUiTM</span>
+          </div>
+
         </div>
-
       </div>
+
     </section>
 
     <!-- 5. NEWS+ TAB -->
