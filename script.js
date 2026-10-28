@@ -1,5 +1,48 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Global Tab Switching Function (Accessible from HTML and Nav)
+window.switchTab = function(targetId) {
+  if (!targetId) return;
+
+  const cleanId = targetId.replace(/^#/, '');
+  const tabPages = document.querySelectorAll('.tab-page');
+  const navItems = document.querySelectorAll('.nav-item');
+  const menuToggle = document.getElementById('menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  // 1. Hide all tab pages
+  tabPages.forEach(page => {
+    page.classList.remove('active');
+    page.style.cssText = 'display: none !important; opacity: 0;';
+  });
+
+  // 2. Remove active underline from navbar links
+  navItems.forEach(item => item.classList.remove('active'));
+
+  // 3. Display the target tab
+  const targetPage = document.getElementById(cleanId);
+  if (targetPage) {
+    targetPage.classList.add('active');
+    targetPage.style.cssText = 'display: block !important; opacity: 1;';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // 4. Highlight matching navbar link
+  const matchingLink = document.querySelector(`.nav-item[data-tab="${cleanId}"]`) || 
+                       document.querySelector(`.nav-item[href="#${cleanId}"]`);
+  if (matchingLink) {
+    matchingLink.classList.add('active');
+  }
+
+  // 5. Close mobile navigation drawer
+  if (navLinks && menuToggle) {
+    navLinks.classList.remove('open');
+    menuToggle.classList.remove('is-active');
+  }
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+  
   // ==========================================
   // 1. MOBILE NAVBAR TOGGLE
   // ==========================================
