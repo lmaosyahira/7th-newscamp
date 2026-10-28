@@ -167,17 +167,18 @@ body {
   transition: opacity 0.25s ease-in-out;
 }
 
-.tab-page.active {
-  display: block;
-  opacity: 1;
+/* Tab Routing Visibility Rules */
+.tab-page {
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out;
 }
 
-/* Hero Section */
-.hero-section {
-  max-width: 1000px;
-  margin: 4rem auto 2.5rem;
-  padding: 0 1.5rem;
-  text-align: center;
+.tab-page.active {
+  display: block !important;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 .hero-tagline {
