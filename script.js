@@ -377,14 +377,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const eventDetails = {
     colloquium: {
       title: "The 54th Journalism e-Colloquium",
-      date: "Oktober 2026",
-      summary: "Acara kemuncak perkongsian hasil laporan bilik berita mahasiswa bersama panel jemputan profesional media tempatan dengan tema 'Stories That Solve'.",
+      date: "October 2026",
+      summary: "The highlight of the event was the sharing of reports from the student newsroom with an invited panel of local media professionals with the theme 'Stories That Solve'.",
       newsLink: "tab-news"
     },
     workshop: {
       title: "NewsCamp Media Workshop",
-      date: "Oktober 2026",
-      summary: "Sesi bengkel praktikal intensif melatih wartawan muda dalam kemahiran pelaporan berasaskan penyelesaian, etika digital, dan visualisasi data.",
+      date: "October 2026",
+      summary: "Intensive practical workshop sessions train young journalists in solutions-based reporting skills, digital ethics, and data visualization.",
       newsLink: "tab-news"
     }
   };
@@ -402,11 +402,11 @@ document.addEventListener('DOMContentLoaded', () => {
       <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">${data.summary}</p>
       
       <div style="background: var(--ci-light-blue); padding: 2.5rem 1rem; border-radius: 8px; text-align: center; color: var(--ci-burgundy); font-weight: 700; font-size: 0.85rem; margin-bottom: 1.5rem;">
-        [ Ruang Galeri / Slideshow Foto Acara ]
+        [ Photo Gallery / Event Photo Slideshow ]
       </div>
 
       <button onclick="closeEventModal(); switchTab('${data.newsLink}');" class="pub-link-btn" style="width: 100%; justify-content: center; background: var(--ci-burgundy); color: #fff; padding: 0.8rem; border: none;">
-        Baca Liputan Berita Penuh Acara Ini &rarr;
+        Read Full Coverage of This Event &rarr;
       </button>
     `;
 
