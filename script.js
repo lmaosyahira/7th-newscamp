@@ -1,4 +1,6 @@
- // Global Tab Switching Function (Accessible from HTML and Nav)
+// ==========================================
+// 1. GLOBAL TAB SWITCHING FUNCTION
+// ==========================================
 window.switchTab = function(targetId) {
   if (!targetId) return;
 
@@ -8,16 +10,16 @@ window.switchTab = function(targetId) {
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
 
-  // 1. Hide all tab pages
+  // Hide all tab pages
   tabPages.forEach(page => {
     page.classList.remove('active');
     page.style.cssText = 'display: none !important; opacity: 0;';
   });
 
-  // 2. Remove active underline from navbar links
+  // Remove active underline from navbar links
   navItems.forEach(item => item.classList.remove('active'));
 
-  // 3. Display the target tab
+  // Display the target tab
   const targetPage = document.getElementById(cleanId);
   if (targetPage) {
     targetPage.classList.add('active');
@@ -25,14 +27,14 @@ window.switchTab = function(targetId) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  // 4. Highlight matching navbar link
+  // Highlight matching navbar link
   const matchingLink = document.querySelector(`.nav-item[data-tab="${cleanId}"]`) || 
                        document.querySelector(`.nav-item[href="#${cleanId}"]`);
   if (matchingLink) {
     matchingLink.classList.add('active');
   }
 
-  // 5. Close mobile navigation drawer
+  // Close mobile navigation drawer
   if (navLinks && menuToggle) {
     navLinks.classList.remove('open');
     menuToggle.classList.remove('is-active');
@@ -40,7 +42,7 @@ window.switchTab = function(targetId) {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-  
+
   // ==========================================
   // 1. MOBILE NAVBAR TOGGLE
   // ==========================================
@@ -63,48 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ==========================================
-  // 2. TAB PAGE ROUTING (SWITCH TABS ON CLICK)
+  // 2. TAB PAGE ROUTING (NAV EVENT LISTENERS)
   // ==========================================
   const navItems = document.querySelectorAll('.nav-item');
-  const tabPages = document.querySelectorAll('.tab-page');
 
-  window.switchTab = function(targetId) {
-    if (!targetId) return;
-
-    // Normalise ID: remove any leading #
-    const cleanId = targetId.replace(/^#/, '');
-
-    // 1. Hide all tab sections
-    tabPages.forEach(page => {
-      page.classList.remove('active');
-      page.removeAttribute('style'); // Clear any stuck inline styles
-    });
-
-    // 2. Remove active underline from all navbar links
-    navItems.forEach(item => item.classList.remove('active'));
-
-    // 3. Find and activate target section
-    const targetPage = document.getElementById(cleanId);
-    if (targetPage) {
-      targetPage.classList.add('active');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    // 4. Highlight matching navbar link
-    const matchingLink = document.querySelector(`.nav-item[data-tab="${cleanId}"]`) || 
-                         document.querySelector(`.nav-item[href="#${cleanId}"]`);
-    if (matchingLink) {
-      matchingLink.classList.add('active');
-    }
-
-    // 5. Close mobile drawer if open
-    if (navLinks && menuToggle) {
-      navLinks.classList.remove('open');
-      menuToggle.classList.remove('is-active');
-    }
-  };
-
-  // Nav item click handler
   navItems.forEach(item => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
@@ -138,15 +102,16 @@ document.addEventListener('DOMContentLoaded', () => {
       window.switchTab('tab-home');
     }
   });
+
   // ==========================================
   // 3. ORGANISATIONAL CHART DATABASE
   // ==========================================
   const orgData = {
     newscamp: {
       advisor: {
-        role: "Penasihat",
+        role: "Advisor",
         name: "PUAN AZLINAWATI BINTI NGAINON",
-        image: "assets/advisor.jpg"
+        image: "assets/ADVISOR_EVENT.jpg"
       },
       subtabs: [
         { id: "all", label: "All Committee" },
@@ -225,7 +190,7 @@ document.addEventListener('DOMContentLoaded', () => {
       advisor: {
         role: "Editorial Advisor",
         name: "PUAN AZLINAWATI BINTI NGAINON",
-        image: "assets/advisor.jpg"
+        image: "assets/ADVISOR_EVENT.jpg"
       },
       subtabs: [
         { id: "all", label: "All Editorial" },
@@ -244,7 +209,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "ABDUL BASSIT BIN SASHIM@HASHIM", role: "Managing Editor", category: "editorial-exec", classGroup: "5A" },
 
         { name: "NURUL SYAHIRA BINTI AFZANIZAM", role: "Website Editor (HOD)", category: "website-team", classGroup: "5A" },
-        { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Content Editor", category: "website-team", classGroup: "5C" },
+        { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Content Editor", category: "website-team", classGroup: "5C" },
         { name: "MUHAMMAD FARHAN BIN RAMLAN", role: "Multimedia Editor", category: "website-team", classGroup: "5B" },
         { name: "SYAZWANI ATHIRAH BINTI HASNAN", role: "Multimedia Editor", category: "website-team", classGroup: "5C" },
 
@@ -275,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         { name: "NURSYAZIYAH SYAZANA BINTI AHMAD", role: "Social Media Editor (HOD)", category: "infographics-social", classGroup: "5B" },
         { name: "QURRATU AINI BINTI CHE MOHD SHAHRIL", role: "Social Media Team", category: "infographics-social", classGroup: "5A" },
-        { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Social Media Team", category: "infographics-social", classGroup: "5B" },
+        { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Social Media Team", category: "infographics-social", classGroup: "5B" },
         { name: "ARISSA BINTI AHMAD KHAIRUL", role: "Social Media Team", category: "infographics-social", classGroup: "5C" },
         { name: "NUR ZULAIKA BINTI MOHD KAMARUL AZLAN", role: "Infographic Editor (HOD)", category: "infographics-social", classGroup: "5C" },
         { name: "NUREEN BATRISYIA IRDINA BINTI MOHD SHAM", role: "Assistant Infographic Editor", category: "infographics-social", classGroup: "5C" },
@@ -300,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
-  // ==========================================
+// ==========================================
   // 4. DIRECTORY RENDERING
   // ==========================================
   let currentMainTab = 'newscamp';
@@ -317,12 +282,22 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!currentData) return;
 
     if (advisorShowcase) {
+      // Show advisor image ONLY on the NewsCamp Committee tab
+      const showAdvisorImage = currentMainTab === 'newscamp' && currentData.advisor.image;
+
       advisorShowcase.innerHTML = `
-        <div class="advisor-avatar-wrap">
-          <img src="${currentData.advisor.image}" alt="${currentData.advisor.name}" class="advisor-avatar" onerror="this.src='https://via.placeholder.com/200/79040A/CCE6F7?text=Advisor'">
+        <div class="profile-card" style="max-width: 300px; margin: 0 auto;">
+          ${showAdvisorImage ? `
+            <div class="profile-avatar-wrap">
+              <img src="${currentData.advisor.image}" 
+                   alt="${currentData.advisor.name}" 
+                   class="profile-avatar"
+                   onerror="this.parentElement.style.display='none';">
+            </div>
+          ` : ''}
+          <h3 class="profile-role">${currentData.advisor.role}</h3>
+          <p class="profile-name">${currentData.advisor.name}</p>
         </div>
-        <h2 class="advisor-role">${currentData.advisor.role}</h2>
-        <p class="advisor-name">${currentData.advisor.name}</p>
       `;
     }
 
@@ -362,15 +337,20 @@ document.addEventListener('DOMContentLoaded', () => {
       : currentData.members.filter(m => m.category === currentSubTab);
 
     membersGrid.innerHTML = filteredMembers.map(member => {
-      const initial = member.name.charAt(0);
+      const imageName = member.name.toLowerCase().replace(/[^a-z0-9]/g, '_');
+      // Render image wrap ONLY for Committee members
+      const showMemberImage = currentMainTab === 'newscamp';
+
       return `
         <div class="profile-card">
-          <div class="profile-avatar-wrap">
-            <img src="assets/${member.name.toLowerCase().replace(/[^a-z0-9]/g, '_')}.jpg" 
-                 alt="${member.name}" 
-                 class="profile-avatar" 
-                 onerror="this.src='https://via.placeholder.com/150/79040A/CCE6F7?text=${encodeURIComponent(initial)}'">
-          </div>
+          ${showMemberImage ? `
+            <div class="profile-avatar-wrap">
+              <img src="assets/${imageName}.jpg" 
+                   alt="${member.name}" 
+                   class="profile-avatar" 
+                   onerror="this.parentElement.style.display='none';">
+            </div>
+          ` : ''}
           <h3 class="profile-role">${member.role}</h3>
           <p class="profile-name">${member.name}</p>
           <span class="profile-class">${member.classGroup}</span>
