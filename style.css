@@ -19,8 +19,8 @@ body {
   font-family: var(--font-sans);
   background-color: var(--ci-bg);
   /* Subtle dot background texture */
-  background-image: radial-gradient(rgba(121, 4, 10, 0.04) 1px),
-                    radial-gradient(rgba(204, 230, 247, 0.5) 1px);
+  background-image: radial-gradient(rgba(121, 4, 10, 0.258) 1px, transparent 1px),
+                    radial-gradient(rgba(204, 230, 247, 0.448) 1px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
   color: var(--ci-dark-text);
@@ -233,7 +233,7 @@ body {
 
 .feature-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 10px 25px rgba(121, 4, 10, 0.08);
+  box-shadow: 0 10px 25px rgba(121, 4, 10, 0.738);
   border-color: rgba(121, 4, 10, 0.2);
 }
 
@@ -274,7 +274,7 @@ body {
 .feature-card.event-card:hover {
   transform: translateY(-5px);
   border-color: var(--ci-burgundy);
-  box-shadow: 0 12px 24px rgba(121, 4, 10, 0.12);
+  box-shadow: 0 10px 25px rgba(121, 4, 10, 0.738);
 }
 
 .card-action {
@@ -366,7 +366,7 @@ body {
 
 /* Vision, Mission & Objectives Styling */
 .vmo-section {
-  padding: 3rem 1rem;
+  padding: 1rem 1rem 3rem 1rem; /* Top: 1rem, Right: 1rem, Bottom: 3rem, Left: 1rem */
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -374,7 +374,7 @@ body {
 .vmo-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 1.5rem;
+  gap: 1.00rem;
 }
 
 .vmo-card {
@@ -382,7 +382,7 @@ body {
   border: 1px solid rgba(121, 4, 10, 0.12);
   border-radius: 12px;
   padding: 2rem 1.5rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 10px 25px rgba(121, 4, 10, 0.185);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
@@ -390,22 +390,7 @@ body {
 
 .vmo-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 25px rgba(121, 4, 10, 0.08);
-}
-
-.vmo-icon-badge {
-  width: 50px;
-  height: 50px;
-  background-color: #CCE6F7;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 1.25rem;
-}
-
-.vmo-icon {
-  font-size: 1.5rem;
+  box-shadow: 0 10px 25px rgba(121, 4, 10, 0.738);
 }
 
 .vmo-title {
