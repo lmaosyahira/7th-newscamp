@@ -19,8 +19,8 @@ body {
   font-family: var(--font-sans);
   background-color: var(--ci-bg);
   /* Subtle dot background texture */
-  background-image: radial-gradient(rgba(121, 4, 10, 0.04) 1px, transparent 1px),
-                    radial-gradient(rgba(204, 230, 247, 0.5) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(121, 4, 10, 0.04) 1px),
+                    radial-gradient(rgba(204, 230, 247, 0.5) 1px);
   background-size: 24px 24px;
   background-position: 0 0, 12px 12px;
   color: var(--ci-dark-text);
@@ -362,6 +362,84 @@ body {
 
 .modal-close:hover {
   color: var(--ci-burgundy);
+}
+
+/* Vision, Mission & Objectives Styling */
+.vmo-section {
+  padding: 3rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.vmo-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.vmo-card {
+  background: #ffffff;
+  border: 1px solid rgba(121, 4, 10, 0.12);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.vmo-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(121, 4, 10, 0.08);
+}
+
+.vmo-icon-badge {
+  width: 50px;
+  height: 50px;
+  background-color: #CCE6F7;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.vmo-icon {
+  font-size: 1.5rem;
+}
+
+.vmo-title {
+  font-family: var(--font-display, 'Anton', sans-serif);
+  color: #79040A;
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.vmo-text {
+  font-family: 'Montserrat', sans-serif;
+  color: #334155;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.vmo-list {
+  font-family: 'Montserrat', sans-serif;
+  color: #334155;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  padding-left: 1.2rem;
+  margin: 0;
+}
+
+.vmo-list li {
+  margin-bottom: 0.5rem;
+}
+
+.vmo-list li:last-child {
+  margin-bottom: 0;
 }
 
 /* Organisational Section */
