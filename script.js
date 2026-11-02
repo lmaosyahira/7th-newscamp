@@ -514,3 +514,97 @@ window.scrollToTop = function() {
     behavior: 'smooth'
   });
 };
+
+// ==========================================
+// SUBTAB FILTERING FOR NEWS, NEWS+, & PODCAST
+// ==========================================
+
+// 1. News Subtab Switcher (BM / English)
+document.querySelectorAll('[data-news-lang]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-news-lang]').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    
+    const lang = e.target.getAttribute('data-news-lang');
+    filterArticles('news-grid', lang);
+  });
+});
+
+// 2. News+ Subtab Switcher (BM / English)
+document.querySelectorAll('[data-newsplus-lang]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-newsplus-lang]').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    
+    const lang = e.target.getAttribute('data-newsplus-lang');
+    filterArticles('newsplus-grid', lang);
+  });
+});
+
+// 3. Podcast Subtab Switcher (Audio / Video)
+document.querySelectorAll('[data-podcast-type]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    document.querySelectorAll('[data-podcast-type]').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    
+    const type = e.target.getAttribute('data-podcast-type');
+    filterArticles('podcast-grid', type);
+  });
+});
+
+// Generic Grid Filtering Function
+function filterArticles(gridId, filterValue) {
+  const grid = document.getElementById(gridId);
+  if (!grid) return;
+
+  const cards = grid.querySelectorAll('.article-card, .podcast-card');
+  cards.forEach(card => {
+    const cardCategory = card.getAttribute('data-category') || '';
+    if (filterValue === 'all' || cardCategory === filterValue) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// 1. News Subtab Filtering (BM vs English)
+  document.querySelectorAll('[data-news-lang]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('[data-news-lang]').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      filterGrid('news-grid', e.target.getAttribute('data-news-lang'));
+    });
+  });
+
+  // 2. News+ Subtab Filtering (BM vs English)
+  document.querySelectorAll('[data-newsplus-lang]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('[data-newsplus-lang]').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      filterGrid('newsplus-grid', e.target.getAttribute('data-newsplus-lang'));
+    });
+  });
+
+  // 3. Podcast Subtab Filtering (Audio vs Video)
+  document.querySelectorAll('[data-podcast-type]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      document.querySelectorAll('[data-podcast-type]').forEach(b => b.classList.remove('active'));
+      e.target.classList.add('active');
+      filterGrid('podcast-grid', e.target.getAttribute('data-podcast-type'));
+    });
+  });
+
+  function filterGrid(gridId, filterVal) {
+    const grid = document.getElementById(gridId);
+    if (!grid) return;
+    const cards = grid.querySelectorAll('.article-card');
+    cards.forEach(card => {
+      const cat = card.getAttribute('data-category');
+      if (filterVal === 'all' || cat === filterVal) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
