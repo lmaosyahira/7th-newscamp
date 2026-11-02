@@ -489,3 +489,28 @@ window.closePodcastEpisode = function() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 };
+
+// ==========================================
+// BACK TO TOP BUTTON LOGIC
+// ==========================================
+
+const backToTopBtn = document.getElementById('back-to-top-btn');
+
+// Show/hide button based on scroll position
+window.addEventListener('scroll', () => {
+  if (backToTopBtn) {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }
+});
+
+// Smooth Scroll to Top Function
+window.scrollToTop = function() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};

@@ -1472,3 +1472,73 @@ body {
     right: auto;
   }
 }
+
+/* ==========================================
+   CUSTOM BRANDED SCROLLBAR
+   ========================================== */
+
+/* Webkit browsers (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9; /* Muted track background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ci-burgundy, #79040A); /* Burgundy scroll handle */
+  border-radius: 9999px;
+  border: 2px solid #f1f5f9; /* Creates a clean border offset */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #5a0307; /* Darker burgundy on hover */
+}
+
+/* Firefox scrollbar support */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ci-burgundy, #79040A) #f1f5f9;
+}
+
+
+/* ==========================================
+   BACK TO TOP FLOATING BUTTON STYLING
+   ========================================== */
+
+.back-to-top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  background-color: var(--ci-burgundy, #79040A);
+  color: #ffffff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(121, 4, 10, 0.3);
+  z-index: 999; /* Keeps button above all elements */
+  
+  /* Hidden by default until user scrolls down */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: all 0.3s ease;
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--ci-light-blue, #CCE6F7);
+  color: var(--ci-burgundy, #79040A);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(121, 4, 10, 0.4);
+}
+
+.back-to-top-btn.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
