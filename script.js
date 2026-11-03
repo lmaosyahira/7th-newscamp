@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
       advisor: {
         role: "Advisor",
         name: "PUAN AZLINAWATI BINTI NGAINON",
-        image: "assets/ADVISOR_EVENT.jpg"
+        image: "assets/ADVISOR_EVENT.gif"
       },
       subtabs: [
         { id: "all", label: "All Committee" },
