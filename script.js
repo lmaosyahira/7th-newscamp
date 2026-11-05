@@ -371,53 +371,206 @@ document.addEventListener('DOMContentLoaded', () => {
 
   renderView();
 
-  // ==========================================
-  // 5. EVENT MODAL POPUPS
-  // ==========================================
-  const eventDetails = {
-    colloquium: {
-      title: "The 54th Journalism e-Colloquium",
-      date: "October 2026",
-      summary: "The highlight of the event was the sharing of reports from the student newsroom with an invited panel of local media professionals with the theme 'Stories That Solve'.",
-      newsLink: "tab-news"
+// ==========================================
+// 5. EVENT MODAL POPUPS (SLIDESHOW DESIGN)
+// ==========================================
+let currentSlideIndex = 0;
+
+const eventDetails = {
+  colloquium: {
+    badge: "E-COLLOQUIUM 2026",
+    title: "ENOUGH BAD NEWS?",
+    subtitle: "Rethinking Journalism Through Solutions & Visual Storytelling",
+    description: "Virtual sessions connect industry experts and alumni with audiences locally and internationally, enabling meaningful exchanges of knowledge and experience.",
+    posterImg: "assets/ECOLL_POSTER.png",
+    overview: {
+      date: "3 November 2026",
+      time: "10:00 A.M. (MYT)",
+      platform: "Streaming Live on YouTube (@Journalism Colloquium)"
     },
-    workshop: {
-      title: "NewsCamp Media Workshop",
+    speakers: [
+      {
+        type: "PANELIST",
+        name: "Kyuwon Lee",
+        role: "Training & Curriculum Manager, Solutions Journalism Network",
+        image: "assets/KYUWON_LEE.png"
+      },
+      {
+        type: "PANELIST",
+        name: "Aizuddin Saad",
+        role: "Mainstream Media Practitioner",
+        image: "assets/AIZUDDIN_SAAD.png"
+      },
+      {
+        type: "PANELIST",
+        name: "Shamshahrin Shamsudin",
+        role: "Photojournalist",
+        image: "assets/SHAMSHAHRIN.png"
+      },
+      {
+        type: "MODERATOR",
+        name: "Nur Amira Afrina",
+        role: "Journalist",
+        image: "assets/AMIRA_AFRINA.png"
+      }
+    ],
+    gallery: Array.from({ length: 17 }, (_, i) => `assets/ECOLLOQUIUM_PHOTOS (${i + 1}).png`),
+    newsLink: "tab-news"
+  },
+  workshop: {
+    badge: "MEDIA WORKSHOP 2026",
+    title: "NEWSROOM SKILLS WORKSHOP",
+    subtitle: "Digital Verification & Data Journalism",
+    description: "Hands-on intensive workshop preparing student journalists with modern verification tools, ethics, and visual reporting techniques.",
+    posterImg: "assets/dummy_photo.jpg",
+    overview: {
       date: "October 2026",
-      summary: "Intensive practical workshop sessions train young journalists in solutions-based reporting skills, digital ethics, and data visualization.",
-      newsLink: "tab-news"
-    }
-  };
+      time: "2:00 P.M. - 5:00 P.M.",
+      platform: "Media Lab 1, FCMS UiTM"
+    },
+    speakers: [],
+    gallery: [],
+    newsLink: "tab-news"
+  }
+};
 
-  window.openEventModal = function(type) {
-    const data = eventDetails[type];
-    if (!data) return;
+window.openEventModal = function(type) {
+  const data = eventDetails[type];
+  if (!data) return;
 
-    const modal = document.getElementById('event-modal');
-    const modalBody = document.getElementById('modal-body');
+  currentSlideIndex = 0; // Reset slideshow to first image
 
-    modalBody.innerHTML = `
-      <span class="feature-badge">${data.date}</span>
-      <h2 style="font-family: var(--font-display); color: var(--ci-burgundy); font-size: 1.8rem; margin: 0.5rem 0 1rem;">${data.title}</h2>
-      <p style="color: #475569; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">${data.summary}</p>
-      
-      <div style="background: var(--ci-light-blue); padding: 2.5rem 1rem; border-radius: 8px; text-align: center; color: var(--ci-burgundy); font-weight: 700; font-size: 0.85rem; margin-bottom: 1.5rem;">
-        [ Photo Gallery / Event Photo Slideshow ]
+  const modal = document.getElementById('event-modal');
+  const modalBody = document.getElementById('modal-body');
+
+  const speakersHTML = data.speakers.length > 0 ? `
+    <div class="modal-speakers-section">
+      <div class="modal-section-tag">FEATURED SPEAKERS</div>
+      <h3 class="modal-section-title">Meet the Panelists & Moderator</h3>
+      <div class="modal-speakers-grid">
+        ${data.speakers.map(s => `
+          <div class="speaker-card">
+            <div class="speaker-img-wrap">
+              <img src="${s.image}" alt="${s.name}" class="speaker-img" onerror="this.src='assets/ADVISOR_EVENT_2.jpg'">
+            </div>
+            <div class="speaker-card-body">
+              <span class="speaker-tag">${s.type}</span>
+              <h4 class="speaker-name">${s.name}</h4>
+              <p class="speaker-role">${s.role}</p>
+            </div>
+          </div>
+        `).join('')}
       </div>
+    </div>
+  ` : '';
 
-      <button onclick="closeEventModal(); switchTab('${data.newsLink}');" class="pub-link-btn" style="width: 100%; justify-content: center; background: var(--ci-burgundy); color: #fff; padding: 0.8rem; border: none;">
+  // Photo Gallery Slideshow Markup
+  const galleryHTML = data.gallery && data.gallery.length > 0 ? `
+    <div class="modal-gallery-section">
+      <div class="modal-section-tag">EVENT HIGHLIGHTS</div>
+      <h3 class="modal-section-title">Photo Gallery</h3>
+      
+      <div class="slideshow-container">
+        <div class="slideshow-track" id="slideshow-track">
+          ${data.gallery.map((imgSrc, index) => `
+            <div class="slide ${index === 0 ? 'active' : ''}">
+              <img src="${imgSrc}" 
+                   alt="Colloquium Slide ${index + 1}" 
+                   class="slide-img" 
+                   onerror="this.src='assets/ECOLLOQUIUM_PHOTOS (${index + 1}).jpg'; this.onerror=function(){this.src='assets/dummy_photo.jpg';};">
+            </div>
+          `).join('')}
+        </div>
+
+        <!-- Navigation Controls -->
+        <button class="slide-prev" onclick="moveSlide(-1)">&#10094;</button>
+        <button class="slide-next" onclick="moveSlide(1)">&#10095;</button>
+
+        <!-- Slide Indicators -->
+        <div class="slide-dots">
+          ${data.gallery.map((_, index) => `
+            <span class="dot ${index === 0 ? 'active' : ''}" onclick="goToSlide(${index})"></span>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  ` : '';
+
+  modalBody.innerHTML = `
+    <!-- Top Dark Hero Header -->
+    <div class="modal-hero-banner">
+      <span class="modal-hero-badge">${data.badge}</span>
+      <h1 class="modal-hero-title">${data.title}</h1>
+      <h2 class="modal-hero-subtitle">${data.subtitle}</h2>
+      <p class="modal-hero-desc">${data.description}</p>
+    </div>
+
+    <!-- Event Overview & Poster Grid -->
+    <div class="modal-content-grid">
+      <div class="modal-poster-wrap">
+        <img src="${data.posterImg}" alt="${data.title}" class="modal-poster-img" onerror="this.src='assets/dummy_photo.jpg'">
+      </div>
+      <div class="modal-details-card">
+        <div class="modal-section-tag">SESSION DETAILS</div>
+        <h3 class="modal-section-title">Colloquium Overview</h3>
+        <ul class="event-meta-list">
+          <li><strong>📅 Date:</strong> ${data.overview.date}</li>
+          <li><strong>⏰ Time:</strong> ${data.overview.time}</li>
+          <li><strong>📍 Platform:</strong> ${data.overview.platform}</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Featured Speakers Grid -->
+    ${speakersHTML}
+
+    <!-- Photo Gallery Slideshow -->
+    ${galleryHTML}
+
+    <!-- Action Button -->
+    <div style="margin-top: 2rem;">
+      <button onclick="closeEventModal(); window.switchTab('${data.newsLink}');" class="modal-action-btn">
         Read Full Coverage of This Event &rarr;
       </button>
-    `;
+    </div>
+  `;
 
-    modal.classList.add('active');
-  };
+  modal.classList.add('active');
+};
 
-  window.closeEventModal = function() {
-    const modal = document.getElementById('event-modal');
-    if (modal) modal.classList.remove('active');
-  };
-});
+window.closeEventModal = function() {
+  const modal = document.getElementById('event-modal');
+  if (modal) modal.classList.remove('active');
+};
+
+// Slideshow Controls
+window.moveSlide = function(direction) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  if (!slides.length) return;
+
+  slides[currentSlideIndex].classList.remove('active');
+  if (dots[currentSlideIndex]) dots[currentSlideIndex].classList.remove('active');
+
+  currentSlideIndex = (currentSlideIndex + direction + slides.length) % slides.length;
+
+  slides[currentSlideIndex].classList.add('active');
+  if (dots[currentSlideIndex]) dots[currentSlideIndex].classList.add('active');
+};
+
+window.goToSlide = function(index) {
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+  if (!slides.length) return;
+
+  slides[currentSlideIndex].classList.remove('active');
+  if (dots[currentSlideIndex]) dots[currentSlideIndex].classList.remove('active');
+
+  currentSlideIndex = index;
+
+  slides[currentSlideIndex].classList.add('active');
+  if (dots[currentSlideIndex]) dots[currentSlideIndex].classList.add('active');
+};
 
 // ==========================================
 // 6. NEWS ARTICLE SUB-ROUTING
@@ -608,3 +761,4 @@ function filterArticles(gridId, filterValue) {
       }
     });
   }
+});
