@@ -678,6 +678,23 @@ body {
   border-radius: 9999px;
 }
 
+/* Profile Card Team Tags & HOD Subtext */
+.profile-team-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--ci-burgundy, #79040A);
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  margin-bottom: 0.2rem;
+}
+
+.hod-badge {
+  color: #660404; /* Warm Amber Gold */
+  font-weight: 800;
+  margin-left: 4px;
+}
+
 /* Subtabs Bar Styling */
 .subtab-btn {
   padding: 6px 16px;
