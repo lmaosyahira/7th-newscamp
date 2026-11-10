@@ -1,22 +1,24 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ==========================================
-  // 1. MOBILE NAVIGATION TOGGLE
+ // ==========================================
+  // 1. MOBILE NAVIGATION TOGGLE (FIXED)
   // ==========================================
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
 
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => {
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       menuToggle.classList.toggle('active');
       navLinks.classList.toggle('active');
     });
 
-    document.querySelectorAll('.nav-item').forEach(link => {
-      link.addEventListener('click', () => {
+    // Close menu when clicking anywhere outside of navbar
+    document.addEventListener('click', (e) => {
+      if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
         menuToggle.classList.remove('active');
         navLinks.classList.remove('active');
-      });
+      }
     });
   }
 
@@ -28,6 +30,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!targetSection) return;
 
     document.querySelectorAll('.tab-page').forEach(sec => sec.classList.remove('active'));
+    
+    targetSection.classList.remove('active');
+    void targetSection.offsetWidth; // Force DOM reflow for animations
     targetSection.classList.add('active');
 
     document.querySelectorAll('.nav-item').forEach(link => {
@@ -38,35 +43,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Close mobile dropdown menu whenever a link is selected
+    if (menuToggle && navLinks) {
+      menuToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  document.querySelectorAll('.nav-item').forEach(link => {
-    link.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetTab = link.getAttribute('data-tab');
-      if (targetTab) {
-        window.location.hash = targetTab;
-        window.switchTab(targetTab);
-      }
-    });
-  });
-
-  window.addEventListener('load', () => {
-    const initialHash = window.location.hash.replace('#', '');
-    if (initialHash && document.getElementById(initialHash)) {
-      window.switchTab(initialHash);
-    } else {
-      window.switchTab('tab-home');
-    }
-  });
-
-  window.addEventListener('popstate', () => {
-    const currentHash = window.location.hash.replace('#', '');
-    if (currentHash && document.getElementById(currentHash)) {
-      window.switchTab(currentHash);
-    }
-  });
 
   // ==========================================
   // 3. ORGANISATIONAL STRUCTURE DATA
