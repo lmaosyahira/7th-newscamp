@@ -458,14 +458,112 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // 7. SINGLE ARTICLE & PODCAST READERS
   // ==========================================
+  const newsArticlesData = {
+    'news-1': {
+      badge: 'LIPUTAN KHAS',
+      headline: 'Pelancaran NewsCamp 7.0 Membawa Laporan Penyelesaian Media Baharu',
+      meta: 'SHAH ALAM | 28 OKTOBER 2026',
+      lead: 'Penganjuran e-Colloquium kali ke-54 memperkasakan etika kewartawanan mahasiswa menerusi fokus Laporan Penyelesaian (Solutions Journalism).',
+      body: `
+        <p style="line-height: 1.8; color: #334155; margin-top: 1rem;">
+          Kandungan penuh artikel berita akan dipaparkan di sini apabila laporan rasmi diterbitkan oleh sidang redaksi.
+        </p>
+      `
+    },
+    'news-2': {
+      badge: 'E-COLLOQUIUM COVERAGE',
+      headline: 'Bridging the Helplessness Gap Through Evidence-Based Solutions Journalism',
+      meta: 'SHAH ALAM | 03 NOVEMBER 2026 • By Syahira Afzanizam',
+      mainImage: 'assets/eq_news1.jpg',
+      mainCaption: 'The organising committee, advisor and moderator pose for a group photo after the 54th Journalism e-Colloquium at UiTM Shah Alam on 3 November 2026.',
+      lead: 'The biannual Journalism e-Colloquium organised by final-year Journalism students returned for its 54th edition, discussing solutions journalism and how photojournalism contributes to shaping the future of journalism.',
+      body: `
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          The virtual event was held via Google Meet and the official Journalism Colloquium YouTube channel, running live for three hours and drawing over 3,700 views.
+        </p>
+        
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          With the theme <strong>"Enough Bad News? Rethinking Journalism Through Solutions and Visual Storytelling"</strong>, the 54th Journalism e-Colloquium addressed topics ranging from the importance of solutions journalism to the impact of photos and multimedia in storytelling.
+        </p>
+        
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          Featured panelists included experienced photojournalists Aizuddin Saad and Shamsharin Shamsudin, alongside Kyuwon Lee, Training and Curriculum Manager at the Solutions Journalism Network. The session was moderated by financial journalist and UiTM alumna Nur Amira Afrina.
+        </p>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          Opening the first session, Kyuwon Lee shared how journalism can no longer stop at highlighting failure; instead, it must apply investigative rigor to response and recovery.
+        </p>
+
+        <blockquote style="border-left: 4px solid var(--ci-burgundy, #79040A); padding-left: 1.25rem; margin: 1.75rem 0; font-style: italic; color: #1e293b; font-weight: 500;">
+          "Solutions journalism is, in a way, a social anatomy of what went well, what worked better, who made it better, and how," Lee explained.
+        </blockquote>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          He defined solutions journalism as rigorous, evidence-based reporting on responses to social problems, noting that it helps bridge the gap left by problem-heavy news which often leaves audiences feeling powerless and disengaged.
+        </p>
+
+        <!-- Inline Article Image (eq_news2.png) -->
+        <figure style="margin: 2rem 0; text-align: center;">
+          <img src="assets/eq_news2.png" alt="Kyuwon Lee Session" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);" onerror="this.src='assets/dummy_photo.jpg';">
+          <figcaption style="font-size: 0.82rem; color: #64748b; margin-top: 0.75rem; text-align: center; font-style: italic;">
+            Solutions Journalism Network’s Training and Curriculum Manager, Kyuwon Lee, discussing shifting media focus from problems to responses.
+          </figcaption>
+        </figure>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          In his officiating speech, Faculty of Communication and Media Studies (FCMS) Dean Professor Dr. Abd. Rasid Abd. Rahman expressed that solutions journalism is increasingly vital following constant exposure to negative news. <em>"It investigates, responds to social challenges, examines what works, what does not, and what lessons can be learned,"</em> he stated.
+        </p>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          Project Director Nur Iman Jasmyn Mohd Zamri emphasized that combining solution-focused reporting with visual storytelling creates a powerful platform for public understanding, institutional accountability, and meaningful social change.
+        </p>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          Spearheaded by final-year Journalism students from FCMS, UiTM Shah Alam, the virtual event served as a capstone initiative, offering students a platform to put editorial strategy, project management, and media networking into action while tackling evolving challenges in contemporary journalism.
+        </p>
+      `
+    }
+  };
+
   window.openNewsArticle = function(id) {
+    const article = newsArticlesData[id];
+    if (!article) return;
+
+    const contentContainer = document.getElementById('news-article-content');
+    if (contentContainer) {
+      contentContainer.innerHTML = `
+        <span class="feature-badge">${article.badge}</span>
+        <h1 class="article-headline" style="color: var(--ci-burgundy, #79040A); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.8rem; margin: 1rem 0 0.5rem;">${article.headline}</h1>
+        <p style="color: #64748b; font-size: 0.85rem; font-weight: 600;">${article.meta}</p>
+        
+        ${article.mainImage ? `
+          <figure style="margin: 1.5rem 0 2rem;">
+            <img src="${article.mainImage}" alt="${article.headline}" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);" onerror="this.src='assets/dummy_photo.jpg';">
+            <figcaption style="font-size: 0.82rem; color: #64748b; margin-top: 0.75rem; text-align: center; font-style: italic;">
+              ${article.mainCaption}
+            </figcaption>
+          </figure>
+        ` : ''}
+
+        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
+        
+        <p class="lead-paragraph" style="font-weight: 600; font-size: 1.1rem; line-height: 1.7; color: #0f172a;">
+          ${article.lead}
+        </p>
+
+        ${article.body}
+      `;
+    }
+
     document.getElementById('news-directory-view').style.display = 'none';
     document.getElementById('news-article-view').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   window.closeNewsArticle = function() {
     document.getElementById('news-article-view').style.display = 'none';
     document.getElementById('news-directory-view').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   window.openNewsPlusArticle = function(id) {

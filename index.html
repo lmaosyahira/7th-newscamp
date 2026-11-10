@@ -376,6 +376,7 @@
     <!-- 4. NEWS TAB (CURRENT NEWS) -->
     <section id="tab-news" class="tab-page">
       <div class="content-wrapper">
+        <!-- Directory View Container -->
         <div id="news-directory-view">
           <div class="hero-section" style="text-align: center;">
             <div class="hero-tagline">PUBLICATIONS</div>
@@ -403,49 +404,40 @@
                   <span class="article-read-time">3 MIN READ</span>
                 </div>
                 <h3 class="article-title">Pelancaran NewsCamp 7.0 Membawa Laporan Penyelesaian Media Baharu</h3>
-                <p class="article-snippet">#DUMMY | Kolej Pengajian Media dan Komunikasi menganjurkan program e-Colloquium bagi mendedahkan mahasiswa kepada etika laporan digital.</p>
+                <p class="article-snippet">Kolej Pengajian Media dan Komunikasi menganjurkan program e-Colloquium bagi mendedahkan mahasiswa kepada etika laporan digital.</p>
                 <div class="article-footer-info">
                   <span class="article-author">Reported by Nurul Syahira</span>
                   <span class="article-date">28 OCT 2026</span>
                 </div>
               </div>
             </article>
-
-            <!-- Dummy ENG News Card -->
+            
+            <!-- English News Card -->
             <article class="article-card" data-category="en" onclick="openNewsArticle('news-2')">
               <div class="article-card-img-wrap">
-                <img src="assets/dummy_photo.jpg" alt="Journalism Media Collage" class="article-card-img">
+                <img src="assets/eq_news1.jpg" alt="54th Journalism e-Colloquium Group Photo" class="article-card-img" onerror="this.src='assets/dummy_photo.jpg';">
               </div>
               <div class="article-card-body">
                 <div class="article-meta-top">
-                  <span class="feature-badge">CURRENT NEWS</span>
+                  <span class="feature-badge">E-COLLOQUIUM COVERAGE</span>
                   <span class="article-read-time">4 MIN READ</span>
                 </div>
-                <h3 class="article-title">Journalism Students Tackle Digital Verification Tools in Workshop</h3>
-                <p class="article-snippet">#DUMMY | UiTM Shah Alam hosts an intensive session on fact-checking tools and data visualisation for student reporters.</p>
+                <h3 class="article-title">Bridging the Helplessness Gap Through Evidence-Based Solutions Journalism</h3>
+                <p class="article-snippet">The 54th Journalism e-Colloquium brought together over 3,700 viewers to discuss solutions journalism, visual storytelling, and newsroom ethics.</p>
                 <div class="article-footer-info">
-                  <span class="article-author">Reported by Sarah Hanis</span>
-                  <span class="article-date">29 OCT 2026</span>
+                  <span class="article-author">Reported by Syahira Afzanizam</span>
+                  <span class="article-date">03 NOV 2026</span>
                 </div>
               </div>
             </article>
           </div>
-        </div>
+        </div> <!-- Fixed: Properly closes news-directory-view here -->
 
         <!-- Article Reader Container -->
         <div id="news-article-view" style="display: none;">
           <button onclick="closeNewsArticle()" class="back-btn">&larr; Back to News Directory</button>
           <div id="news-article-content" class="article-reader-box">
-            <span class="feature-badge">LIPUTAN KHAS</span>
-            <h1 class="article-headline" style="color: var(--ci-burgundy); margin: 1rem 0;">Pelancaran NewsCamp 7.0 Membawa Laporan Penyelesaian Media Baharu</h1>
-            <p style="color: #64748b; font-size: 0.85rem;">SHAH ALAM | 28 OKTOBER 2026</p>
-            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
-            <p class="lead-paragraph" style="font-weight: 600; font-size: 1.1rem; line-height: 1.7; color: #0f172a;">
-              #DUMMY | Penganjuran e-Colloquium kali ke-54 memperkasakan etika kewartawanan mahasiswa menerusi fokus Laporan Penyelesaian (Solutions Journalism).
-            </p>
-            <p style="line-height: 1.8; color: #334155; margin-top: 1rem;">
-              Kandungan penuh artikel berita akan dipaparkan di sini apabila laporan rasmi diterbitkan oleh sidang redaksi.
-            </p>
+            <!-- Injected via script.js -->
           </div>
         </div>
       </div>
@@ -481,7 +473,7 @@
                   <span class="article-read-time">6 MIN READ</span>
                 </div>
                 <h3 class="article-title">Cabaran Transisi Kenderaan Elektrik Dalam Kampus IPT</h3>
-                <p class="article-snippet">#DUMMY | Analisis terhadap infrastruktur pengecasan EV dan kesediaannya untuk generasi muda di Selangor.</p>
+                <p class="article-snippet">Analisis terhadap infrastruktur pengecasan EV dan kesediaannya untuk generasi muda di Selangor.</p>
                 <div class="article-footer-info">
                   <span class="article-author">Feature by Naufal Muammar</span>
                   <span class="article-date">30 OCT 2026</span>
@@ -500,7 +492,7 @@
                   <span class="article-read-time">5 MIN READ</span>
                 </div>
                 <h3 class="article-title">Fast Fashion Sustainability: Beyond Youth Consumerism</h3>
-                <p class="article-snippet">#DUMMY | Exploring how local circular fashion movements provide sustainable alternatives for university students.</p>
+                <p class="article-snippet">Exploring how local circular fashion movements provide sustainable alternatives for university students.</p>
                 <div class="article-footer-info">
                   <span class="article-author">Feature by Nur Ameena</span>
                   <span class="article-date">01 NOV 2026</span>
@@ -519,7 +511,7 @@
             <p style="color: #64748b; font-size: 0.85rem;">SHAH ALAM | 30 OKTOBER 2026</p>
             <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
             <p class="lead-paragraph" style="font-weight: 600; font-size: 1.1rem; line-height: 1.7; color: #0f172a;">
-              #DUMMY | Kajian mendalam terhadap ekosistem pengangkutan lestari dan keupayaan infrastruktur stesen cas elektrik.
+              Kajian mendalam terhadap ekosistem pengangkutan lestari dan keupayaan infrastruktur stesen cas elektrik.
             </p>
             <p style="line-height: 1.8; color: #334155; margin-top: 1rem;">
               Laporan siasatan penuh akan diterbitkan secara lengkap di ruang News+ ini.
@@ -559,7 +551,7 @@
                   <span class="article-read-time">15 MIN AUDIO</span>
                 </div>
                 <h3 class="article-title">Episod 1: Masa Depan Etika Kewartawanan AI</h3>
-                <p class="article-snippet">#DUMMY | Perbincangan audio santai mengenai kecerdasan buatan dalam bilik berita hari ini.</p>
+                <p class="article-snippet">Perbincangan audio santai mengenai kecerdasan buatan dalam bilik berita hari ini.</p>
                 <div class="article-footer-info">
                   <span class="article-author">Hosted by Nur Alia Maisarah</span>
                   <span class="article-date">02 NOV 2026</span>
@@ -578,7 +570,7 @@
                   <span class="article-read-time">22 MIN VIDEO</span>
                 </div>
                 <h3 class="article-title">Episode 2: Behind The Scenes of NewsCamp 7.0</h3>
-                <p class="article-snippet">#DUMMY | Watch the multimedia team manage production, lighting, and stage setup live.</p>
+                <p class="article-snippet">Watch the multimedia team manage production, lighting, and stage setup live.</p>
                 <div class="article-footer-info">
                   <span class="article-author">Hosted by Nurin Isabella</span>
                   <span class="article-date">02 NOV 2026</span>
