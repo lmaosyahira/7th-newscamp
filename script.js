@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
- // ==========================================
-  // 1. MOBILE NAVIGATION TOGGLE (FIXED)
+  // ==========================================
+  // 1. MOBILE NAVIGATION TOGGLE
   // ==========================================
   const menuToggle = document.getElementById('menu-toggle');
   const navLinks = document.getElementById('nav-links');
@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
       navLinks.classList.toggle('active');
     });
 
-    // Close menu when clicking anywhere outside of navbar
     document.addEventListener('click', (e) => {
       if (!menuToggle.contains(e.target) && !navLinks.contains(e.target)) {
         menuToggle.classList.remove('active');
@@ -32,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.tab-page').forEach(sec => sec.classList.remove('active'));
     
     targetSection.classList.remove('active');
-    void targetSection.offsetWidth; // Force DOM reflow for animations
+    void targetSection.offsetWidth; // Force DOM reflow to re-trigger animation
     targetSection.classList.add('active');
 
     document.querySelectorAll('.nav-item').forEach(link => {
@@ -43,7 +42,6 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Close mobile dropdown menu whenever a link is selected
     if (menuToggle && navLinks) {
       menuToggle.classList.remove('active');
       navLinks.classList.remove('active');
@@ -51,6 +49,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
+
+  // Add click listeners to header nav items automatically
+  document.querySelectorAll('.nav-item[data-tab]').forEach(navItem => {
+    navItem.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetTab = navItem.getAttribute('data-tab');
+      if (targetTab) {
+        window.switchTab(targetTab);
+      }
+    });
+  });
 
   // ==========================================
   // 3. ORGANISATIONAL STRUCTURE DATA
@@ -77,7 +86,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "hospitality", label: "Special Task & Hospitality" }
       ],
       members: [
-        // High Committee
         { name: "NUR IMAN JASMYN BINTI MOHD ZAMRI", role: "Project Director", team: "High Committee", isHod: false, category: "high-comm", classGroup: "5B", video: "JASMYN_EVENT.mp4" },
         { name: "PUTRI NUR GUSTAWINA BINTI HERMES MEDIA PUTRA", role: "Deputy Director", team: "High Committee", isHod: false, category: "high-comm", classGroup: "5C", video: "GUS_EVENT.mp4" },
         { name: "MADELIN SURAYA BINTI MOHD ASRI", role: "Secretary", team: "High Committee", isHod: false, category: "high-comm", classGroup: "5A", video: "LIN_EVENT.mp4" },
@@ -85,7 +93,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NOOR ALYA NISA BINTI MD YUSRI", role: "Treasurer", team: "High Committee", isHod: false, category: "high-comm", classGroup: "5C", video: "NISA_EVENT.mp4" },
         { name: "MUHAMMAD FARHAN BIN RAMLAN", role: "Assistant Treasurer", team: "High Committee", isHod: false, category: "high-comm", classGroup: "5B", video: "HAN_EVENT.mp4" },
 
-        // Program & Protocol // Corp Comm
         { name: "UMI RABIATUL ADAWIAH BINTI MUHAMAD", role: "Head of Department 1", team: "Program & Protocol", isHod: true, category: "protocol", classGroup: "5A", video: "ADAA_EVENT.mp4" },
         { name: "NURUL SAKINAH BINTI SOFLI", role: "Head of Department 2", team: "Program & Protocol", isHod: true, category: "protocol", classGroup: "5B", video: "KEENA_EVENT.mp4" },
         { name: "SITI HUMAIRAH BINTI ABDUL RAHIM", role: "Team Member", team: "Program & Protocol", isHod: false, category: "protocol", classGroup: "5B", video: "MAIRA_EVENT.mp4" },
@@ -96,7 +103,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NURUL FARISHA BINTI AHMAD FAISAL", role: "Team Member", team: "Program & Protocol", isHod: false, category: "protocol", classGroup: "5C", video: "FARISHA_EVENT.mp4" },
         { name: "NURUL RUSYDINA BINTI MOHD RIDUWAN", role: "Team Member", team: "Program & Protocol", isHod: false, category: "protocol", classGroup: "5B", video: "RUSYDINA_EVENT.mp4" },
 
-        // Creative Team
         { name: "ASLINA", role: "Head of Department 1", team: "Creative Team", isHod: true, category: "curriculum", classGroup: "5B", video: "LINA_EVENT.mp4" },
         { name: "NUR AIN DAYANA BINTI MOHD FADIL", role: "Head of Department 2", team: "Creative Team", isHod: true, category: "curriculum", classGroup: "5A", video: "AIND_EVENT.mp4" },
         { name: "QURRATU AINI BINTI CHE MOHD SHAHRIL", role: "Team Member", team: "Creative Team", isHod: false, category: "curriculum", classGroup: "5A", video: "QYU_EVENT.mp4" },
@@ -106,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NURR EDRINNA BINTI JUNAIDI", role: "Team Member", team: "Creative Team", isHod: false, category: "curriculum", classGroup: "5C", video: "ERIN_EVENT.mp4" },
         { name: "NUR FAZLINA BINTI AMIL HASLI", role: "Team Member", team: "Creative Team", isHod: false, category: "curriculum", classGroup: "5A", video: "ELYNA_EVENT.mp4" },
 
-        // Media and Publicity
         { name: "NURSYAZIYAH SYAZANA BINTI AHMAD", role: "Head of Department 1", team: "Media & Publicity", isHod: true, category: "publicity", classGroup: "5B", video: "ZEE_EVENT.mp4" },
         { name: "NUREEN BATRISYIA IRDINA BINTI MOHD SHAM", role: "Head of Department 2", team: "Media & Publicity", isHod: true, category: "publicity", classGroup: "5C", video: "NUREEN_EVENT.mp4" },
         { name: "AUNI SYAFIAH BINTI MOHD AZMIZAN", role: "Team Member", team: "Media & Publicity", isHod: false, category: "publicity", classGroup: "5A", video: "AUNI_EVENT.mp4" },
@@ -115,14 +120,12 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "MUHAMMAD DANISH AIMAN BIN MOHD ZUKI", role: "Team Member", team: "Media & Publicity", isHod: false, category: "publicity", classGroup: "5B", video: "DANISH_EVENT.mp4" },
         { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Team Member", team: "Media & Publicity", isHod: false, category: "publicity", classGroup: "5C", video: "NAUFAL_EVENT.mp4" },
 
-        // Logistics
         { name: "AHMAD FIRDAUS BIN ABDUL RAHMAN", role: "Head of Department 1", team: "Logistics", isHod: true, category: "logistics", classGroup: "5A", video: "DAUS_EVENT.mp4" },
         { name: "NURFARAHIN BINTI MOHAMAD ZAIDI", role: "Head of Department 2", team: "Logistics", isHod: true, category: "logistics", classGroup: "5C", video: "FARAHIN_EVENT.mp4" },
         { name: "MUHAMMAD NAIM BIN AZIZUL RAHMAN", role: "Team Member", team: "Logistics", isHod: false, category: "logistics", classGroup: "5A", video: "NAIM_EVENT.mp4" },
         { name: "AIMAN DANISH ISKANDAR BIN MOHD ZUL ISKANDAR", role: "Team Member", team: "Logistics", isHod: false, category: "logistics", classGroup: "5C", video: "IS_EVENT.mp4" },
         { name: "SITI NADIAH BINTI MAZLAN", role: "Team Member", team: "Logistics", isHod: false, category: "logistics", classGroup: "5B", video: "NADIAHM_EVENT.mp4" },
 
-        // Sponsorship and Partnership
         { name: "NUR ANIS LIYANA BINTI MAT ARIS", role: "Head of Department 1", team: "Sponsorship & Partnership", isHod: true, category: "sponsorship", classGroup: "5A", video: "YANA_EVENT.mp4" },
         { name: "AIN NAJIHAH BINTI KHABIL", role: "Head of Department 2", team: "Sponsorship & Partnership", isHod: true, category: "sponsorship", classGroup: "5C", video: "AINK_EVENT.mp4" },
         { name: "SYASYA QISTINA BINTI MOHD HAIRUL NIZAM", role: "Team Member", team: "Sponsorship & Partnership", isHod: false, category: "sponsorship", classGroup: "5A", video: "SYASYA_EVENT.mp4" },
@@ -133,7 +136,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NUR ALIA MAISARAH BINTI AHMAD KAMAL", role: "Team Member", team: "Sponsorship & Partnership", isHod: false, category: "sponsorship", classGroup: "5C", video: "ALIA_EVENT.mp4" },
         { name: "AHMAD HAZIQ BIN ROSELY", role: "Team Member", team: "Sponsorship & Partnership", isHod: false, category: "sponsorship", classGroup: "5C", video: "HAZIQR_EVENT.mp4" },
 
-        // Technical
         { name: "FATIN HANA SOLEHAH BINTI SHUHARDI", role: "Head of Department 1", team: "Technical", isHod: true, category: "technical", classGroup: "5B", video: "HANA_EVENT.mp4" },
         { name: "MUHAMMAD HAZIQ BIN KHAIRUL ANUAR", role: "Head of Department 2", team: "Technical", isHod: true, category: "technical", classGroup: "5B", video: "HAZIQK_EVENT.mp4" },
         { name: "NUR ZULAIKA BINTI MOHD KAMARUL AZLAN", role: "Team Member", team: "Technical", isHod: false, category: "technical", classGroup: "5C", video: "ZULAIKA_EVENT.mp4" },
@@ -141,7 +143,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NUR AINA FATINI BINTI NASRUDDIN", role: "Team Member", team: "Technical", isHod: false, category: "technical", classGroup: "5C", video: "AINA_EVENT.mp4" },
         { name: "NUR NADIA BINTI MOHD ROSLAN", role: "Team Member", team: "Technical", isHod: false, category: "technical", classGroup: "5C", video: "NADIA_EVENT.mp4" },
 
-        // Special Task and Hospitality
         { name: "AMMAR A'FIF BIN MD A'FIFULLAH", role: "Team Member", team: "Special Task & Hospitality", isHod: false, category: "hospitality", classGroup: "5C", video: "AMMAR_EVENT.mp4" },
         { name: "ARIEQ SHAFI BIN NOR ADNAN", role: "Team Member", team: "Special Task & Hospitality", isHod: false, category: "hospitality", classGroup: "5B", video: "ARIEQ_EVENT.mp4" }
       ]
@@ -163,13 +164,11 @@ document.addEventListener('DOMContentLoaded', () => {
         { id: "creative-multimedia", label: "Creative & Multimedia" }
       ],
       members: [
-        // Editorial High Committee
         { name: "MUHAMMAD HAIKAL BIN YURI AZHAR", role: "Editor-in-Chief", team: "Editorial High Committee", isHod: false, category: "high-comm", classGroup: "5C" },
         { name: "NURFARAHIN BINTI MOHAMAD ZAIDI", role: "Assistant Editor-in-Chief", team: "Editorial High Committee", isHod: false, category: "high-comm", classGroup: "5C" },
         { name: "SITI NADIAH BINTI MAZLAN", role: "Secretary", team: "Editorial High Committee", isHod: false, category: "high-comm", classGroup: "5B" },
         { name: "ABDUL BASSIT BIN SASHIM@HASHIM", role: "Managing Editor", team: "Editorial High Committee", isHod: false, category: "high-comm", classGroup: "5A" },
 
-        // BM Section
         { name: "AIN NUR MELISSA BINTI IBRAHIM", role: "Bahasa Melayu Editor", team: "Bahasa Melayu Section", isHod: true, category: "bm-section", classGroup: "5C" },
         { name: "AIN ZULFA BINTI ZAINIZAM", role: "Bahasa Melayu Sub-Editor", team: "Bahasa Melayu Section", isHod: false, category: "bm-section", classGroup: "5B" },
         { name: "UMI RABIATUL ADAWIAH BINTI MUHAMAD", role: "Bahasa Melayu Proofreader", team: "Bahasa Melayu Section", isHod: false, category: "bm-section", classGroup: "5A" },
@@ -183,7 +182,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NURR EDRINNA BINTI JUNAIDI", role: "BM Journalist", team: "Bahasa Melayu Section", isHod: false, category: "bm-section", classGroup: "5C" },
         { name: "NURUL FARISHA BINTI AHMAD FAISAL", role: "BM Journalist", team: "Bahasa Melayu Section", isHod: false, category: "bm-section", classGroup: "5C" },
 
-        // English Section
         { name: "NUR AMEENA BINTI AZMAN", role: "English Editor", team: "English Section", isHod: true, category: "en-section", classGroup: "5A" },
         { name: "SARAH HANIS WADHIHAH BINTI ZABIDI", role: "English Sub-Editor", team: "English Section", isHod: false, category: "en-section", classGroup: "5A" },
         { name: "SITI HUMAIRAH BINTI ABDUL RAHIM", role: "English Proofreader", team: "English Section", isHod: false, category: "en-section", classGroup: "5B" },
@@ -196,7 +194,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "NUR IMAN JASMYN BINTI MOHD ZAMRI", role: "English Journalist", team: "English Section", isHod: false, category: "en-section", classGroup: "5B" },
         { name: "NUR AINA FATINI BINTI NASRUDDIN", role: "English Journalist", team: "English Section", isHod: false, category: "en-section", classGroup: "5C" },
 
-        // Communication & Digital Department
         { name: "NURSYAZIYAH SYAZANA BINTI AHMAD", role: "Social Media Editor", team: "Social Media Team", isHod: true, category: "digital-comm", classGroup: "5B" },
         { name: "QURRATU AINI BINTI CHE MOHD SHAHRIL", role: "Social Media Team", team: "Social Media Team", isHod: false, category: "digital-comm", classGroup: "5A" },
         { name: "NAUFAL MUAMMAR BIN ZAIFUL HIZAM", role: "Social Media Team", team: "Social Media Team", isHod: false, category: "digital-comm", classGroup: "5C" },
@@ -210,7 +207,6 @@ document.addEventListener('DOMContentLoaded', () => {
         { name: "FATIN NAJIHA BINTI ALI SHARIFUDDIN", role: "Infographic Sub-Editor (BM)", team: "Infographic Team", isHod: false, category: "digital-comm", classGroup: "5B" },
         { name: "KAMELIA SHAIRA BINTI KAMARUDIN", role: "Infographic Sub-Editor (ENG)", team: "Infographic Team", isHod: false, category: "digital-comm", classGroup: "5C" },
 
-        // Creative & Multimedia
         { name: "AIMAN DANISH ISKANDAR BIN MOHD ZUL ISKANDAR", role: "Creative Editor", team: "Creative Team", isHod: true, category: "creative-multimedia", classGroup: "5C" },
         { name: "ASLINA", role: "Creative Team", team: "Creative Team", isHod: false, category: "creative-multimedia", classGroup: "5B" },
         { name: "NIK NUR ALYAA BINTI NIK MOHAMED", role: "Creative Team", team: "Creative Team", isHod: false, category: "creative-multimedia", classGroup: "5B" },
@@ -240,7 +236,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const membersGrid = document.getElementById('members-grid');
   const mainTabBtns = document.querySelectorAll('.main-tab-btn');
 
-function renderView() {
+  function renderView() {
     const currentData = orgData[currentMainTab];
     if (!currentData) return;
 
@@ -314,7 +310,6 @@ function renderView() {
             </div>
           ` : ''}
           
-          <!-- Team Name & HOD Badge -->
           <div class="profile-team-tag">
             ${member.team} ${member.isHod ? '<span class="hod-badge">• HOD</span>' : ''}
           </div>
@@ -621,7 +616,6 @@ function renderView() {
           He defined solutions journalism as rigorous, evidence-based reporting on responses to social problems, noting that it helps bridge the gap left by problem-heavy news which often leaves audiences feeling powerless and disengaged.
         </p>
 
-        <!-- Inline Article Image (eq_news2.png) -->
         <figure style="margin: 2rem 0; text-align: center;">
           <img src="assets/eq_news2.png" alt="Kyuwon Lee Session" style="width: 100%; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);" onerror="this.src='assets/dummy_photo.jpg';">
           <figcaption style="font-size: 0.82rem; color: #64748b; margin-top: 0.75rem; text-align: center; font-style: italic;">
@@ -634,7 +628,7 @@ function renderView() {
         </p>
 
         <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
-         <em>"It investigates, responds to social challenges, examines what works, what does not, and what lessons can be learned,"</em> he stated.
+          <em>"It investigates, responds to social challenges, examines what works, what does not, and what lessons can be learned,"</em> he stated.
         </p>
 
         <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
@@ -655,6 +649,9 @@ function renderView() {
     const contentContainer = document.getElementById('news-article-content');
     if (contentContainer) {
       contentContainer.innerHTML = `
+        <button onclick="closeNewsArticle()" class="back-btn" style="margin-bottom: 1.5rem;">
+          &larr; Back to News Directory
+        </button>
         <span class="feature-badge">${article.badge}</span>
         <h1 class="article-headline" style="color: var(--ci-burgundy, #79040A); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.8rem; margin: 1rem 0 0.5rem;">${article.headline}</h1>
         <p style="color: #64748b; font-size: 0.85rem; font-weight: 600;">${article.meta}</p>
