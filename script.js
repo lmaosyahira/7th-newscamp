@@ -511,7 +511,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </figure>
 
         <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
-          In his officiating speech, Faculty of Communication and Media Studies (FCMS) Dean Professor Dr. Abd. Rasid Abd. Rahman expressed that solutions journalism is increasingly vital following constant exposure to negative news. <em>"It investigates, responds to social challenges, examines what works, what does not, and what lessons can be learned,"</em> he stated.
+          In his officiating speech, Faculty of Communication and Media Studies (FCMS) Dean Professor Dr. Abd. Rasid Abd. Rahman expressed that solutions journalism is increasingly vital following constant exposure to negative news. 
+        </p>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+         <em>"It investigates, responds to social challenges, examines what works, what does not, and what lessons can be learned,"</em> he stated.
         </p>
 
         <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
