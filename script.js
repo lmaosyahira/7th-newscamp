@@ -21,27 +21,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // ==========================================
-  // 2. TAB PAGE ROUTING & NAVIGATION
+// ==========================================
+  //2. DYNAMIC TAB ROUTING WITH REFLOW
   // ==========================================
   window.switchTab = function(tabId) {
     const targetSection = document.getElementById(tabId);
     if (!targetSection) return;
 
-    document.querySelectorAll('.tab-page').forEach(sec => sec.classList.remove('active'));
+    // 1. Hide all tab pages instantly
+    document.querySelectorAll('.tab-page').forEach(sec => {
+      sec.classList.remove('active');
+      sec.style.display = 'none';
+    });
+
+    // 2. Prepare target section
+    targetSection.style.display = 'block';
     
-    targetSection.classList.remove('active');
-    void targetSection.offsetWidth; // Force DOM reflow to re-trigger animation
+    // Force browser DOM reflow to re-trigger the dynamic keyframe animation
+    void targetSection.offsetWidth; 
+    
+    // 3. Activate target section
     targetSection.classList.add('active');
 
+    // 4. Update active states on navigation items
     document.querySelectorAll('.nav-item').forEach(link => {
-      if (link.getAttribute('data-tab') === tabId) {
+      const linkTab = link.getAttribute('data-tab');
+      if (linkTab === tabId) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');
       }
     });
 
+    // 5. Close mobile drawer if open
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('nav-links');
     if (menuToggle && navLinks) {
       menuToggle.classList.remove('active');
       navLinks.classList.remove('active');
@@ -49,17 +63,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-
-  // Add click listeners to header nav items automatically
-  document.querySelectorAll('.nav-item[data-tab]').forEach(navItem => {
-    navItem.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetTab = navItem.getAttribute('data-tab');
-      if (targetTab) {
-        window.switchTab(targetTab);
-      }
-    });
-  });
 
   // ==========================================
   // 3. ORGANISATIONAL STRUCTURE DATA

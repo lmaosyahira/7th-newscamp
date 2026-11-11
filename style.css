@@ -1186,25 +1186,49 @@ body {
   margin: 0;
 }
 
+/* ==========================================
+   BACK TO TOP BUTTON (PILL STYLE WITH CHUNKY ARROW)
+   ========================================== */
 .back-to-top-btn {
   position: fixed;
-  bottom: 40px;
-  right: 25px;
-  width: 45px;
-  height: 45px;
-  background-color: var(--ci-burgundy);
-  color: #ffffff;
-  border: none;
-  border-radius: 50%;
-  font-size: 1.2rem;
-  font-weight: bold;
+  bottom: 30px;
+  right: 30px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background-color: var(--ci-light-blue, #f1f5f9);
+  border: 1px solid rgba(121, 4, 10, 0.25);
+  border-radius: 9999px;
+  color: var(--ci-burgundy, #79040a);
+  font-family: var(--font-sans, 'Montserrat', sans-serif);
+  font-weight: 500; /* Extra bold for visibility */
+  font-size: 0.95rem; /* Slightly larger text */
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(121, 4, 10, 0.3);
+  box-shadow: 0 4px 15px rgba(121, 4, 10, 0.2);
   z-index: 999;
   opacity: 0;
   visibility: hidden;
   transform: translateY(15px);
   transition: all 0.3s ease;
+}
+
+/* Make the arrow chunkier and stand out */
+.back-to-top-btn::before {
+  content: "";
+}
+
+.back-to-top-btn {
+  /* Using font-weight and sizing to make the arrow character chunky */
+  font-size: 1.15rem; 
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--ci-burgundy, #79040a);
+  color: #ffffff;
+  border-color: var(--ci-burgundy, #79040a);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(121, 4, 10, 0.3);
 }
 
 .back-to-top-btn.visible {
@@ -1382,4 +1406,32 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #5a0307;
+}
+
+/* ==========================================
+   DYNAMIC TAB TRANSITION ANIMATIONS
+   ========================================== */
+@keyframes dynamicTabEnter {
+  0% {
+    opacity: 0;
+    transform: translateY(22px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.tab-page {
+  display: none;
+  opacity: 0;
+  min-height: 75vh;
+  padding: 2.5rem 1.5rem 4rem;
+  will-change: opacity, transform;
+}
+
+.tab-page.active {
+  display: block !important;
+  opacity: 1 !important;
+  animation: dynamicTabEnter 1.00s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
