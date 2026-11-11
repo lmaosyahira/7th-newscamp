@@ -601,7 +601,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </p>
         
         <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
-          Featured panelists included experienced photojournalists Aizuddin Saad and Shamsharin Shamsudin, alongside Kyuwon Lee, Training and Curriculum Manager at the Solutions Journalism Network. The session was moderated by financial journalist and UiTM alumna Nur Amira Afrina.
+          Featured panelists included experienced photojournalists Aizuddin Saad and Shamsharin Shamsudin, alongside Kyuwon Lee, Training and Curriculum Manager at the Solutions Journalism Network.
+        </p>
+
+        <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
+          The session was moderated by financial journalist and UiTM alumna Nur Amira Afrina.
         </p>
 
         <p style="line-height: 1.8; color: #334155; margin-top: 1.25rem;">
