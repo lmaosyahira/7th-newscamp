@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-// ==========================================
-  //2. DYNAMIC TAB ROUTING WITH REFLOW
+  // ==========================================
+  // 2. DYNAMIC TAB ROUTING WITH REFLOW
   // ==========================================
   window.switchTab = function(tabId) {
     const targetSection = document.getElementById(tabId);
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Prepare target section
     targetSection.style.display = 'block';
     
-    // Force browser DOM reflow to re-trigger the dynamic keyframe animation
+    // Force browser DOM reflow to re-trigger dynamic keyframe animation
     void targetSection.offsetWidth; 
     
     // 3. Activate target section
@@ -54,8 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // 5. Close mobile drawer if open
-    const menuToggle = document.getElementById('menu-toggle');
-    const navLinks = document.getElementById('nav-links');
     if (menuToggle && navLinks) {
       menuToggle.classList.remove('active');
       navLinks.classList.remove('active');
@@ -532,21 +530,25 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // ==========================================
-  // 6. PUBLICATION & BROADCAST SUBTAB FILTERS
+  // 6. GENERAL GRID FILTER HELPER & LISTENER
   // ==========================================
+  window.filterGrid = function(gridId, category) {
+    const cards = document.querySelectorAll(`#${gridId} .article-card`);
+    cards.forEach(card => {
+      const cardCat = card.getAttribute('data-category');
+      if (category === 'all' || cardCat === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  };
+
   document.querySelectorAll('[data-news-lang]').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('[data-news-lang]').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
       filterGrid('news-grid', e.target.getAttribute('data-news-lang'));
-    });
-  });
-
-  document.querySelectorAll('[data-newsplus-lang]').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      document.querySelectorAll('[data-newsplus-lang]').forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active');
-      filterGrid('newsplus-grid', e.target.getAttribute('data-newsplus-lang'));
     });
   });
 
@@ -558,22 +560,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  function filterGrid(gridId, filterVal) {
-    const grid = document.getElementById(gridId);
-    if (!grid) return;
-    const cards = grid.querySelectorAll('.article-card');
-    cards.forEach(card => {
-      const cat = card.getAttribute('data-category');
-      if (filterVal === 'all' || cat === filterVal) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-
   // ==========================================
-  // 7. SINGLE ARTICLE & PODCAST READERS
+  // 7. ARTICLE READERS DATA & ROUTING
   // ==========================================
   const newsArticlesData = {
     'news-1': {
@@ -694,23 +682,50 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.openNewsPlusArticle = function(id) {
-    document.getElementById('newsplus-directory-view').style.display = 'none';
-    document.getElementById('newsplus-article-view').style.display = 'block';
+    const directoryView = document.getElementById('newsplus-directory-view');
+    const articleView = document.getElementById('newsplus-article-view');
+    const articleContent = document.getElementById('newsplus-article-content');
+
+    if (!directoryView || !articleView || !articleContent) return;
+
+    articleContent.innerHTML = `
+      <article class="full-article">
+        <span class="feature-badge">NEWS+ EXCLUSIVE</span>
+        <h1 class="article-headline" style="color: var(--ci-burgundy, #79040A); font-weight: 800; font-size: 1.8rem; margin: 1rem 0 0.5rem;">Special Feature Article</h1>
+        <p style="color: #64748b; font-size: 0.85rem; font-weight: 600;">Published November 2026 | NewsCamp 7.0 Editorial Desk</p>
+        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
+        <div class="article-full-body">
+          <p style="line-height: 1.8; color: #334155;">Full article text content and multimedia elements for item (${id}) will be displayed here.</p>
+        </div>
+      </article>
+    `;
+
+    directoryView.style.display = 'none';
+    articleView.style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   window.closeNewsPlusArticle = function() {
-    document.getElementById('newsplus-article-view').style.display = 'none';
-    document.getElementById('newsplus-directory-view').style.display = 'block';
+    const directoryView = document.getElementById('newsplus-directory-view');
+    const articleView = document.getElementById('newsplus-article-view');
+
+    if (directoryView && articleView) {
+      articleView.style.display = 'none';
+      directoryView.style.display = 'block';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   window.openPodcastEpisode = function(id) {
     document.getElementById('podcast-directory-view').style.display = 'none';
     document.getElementById('podcast-episode-view').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   window.closePodcastEpisode = function() {
     document.getElementById('podcast-episode-view').style.display = 'none';
     document.getElementById('podcast-directory-view').style.display = 'block';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // ==========================================
@@ -736,3 +751,30 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
 });
+
+// ==========================================
+// 9. GLOBAL NEWS+ FILTER FUNCTION
+// ==========================================
+window.filterNewsPlus = function(category, btnElement) {
+  // Update active subtab button style specifically inside News+
+  const subtabs = document.querySelectorAll('#tab-newsplus .subtabs-bar .subtab-btn');
+  subtabs.forEach(btn => btn.classList.remove('active'));
+  if (btnElement) {
+    btnElement.classList.add('active');
+  }
+
+  // Target all article cards inside the News+ section
+  const cards = document.querySelectorAll('#tab-newsplus .article-card');
+
+  cards.forEach(card => {
+    const cardCat = card.getAttribute('data-category');
+    
+    if (category === 'all' || cardCat === category) {
+      card.style.display = 'flex';
+      card.style.opacity = '1';
+    } else {
+      card.style.display = 'none';
+      card.style.opacity = '0';
+    }
+  });
+};

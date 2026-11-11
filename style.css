@@ -465,29 +465,52 @@ body {
   max-width: 950px;
 }
 
+/* Subtabs bar layout */
+.subtabs-bar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
 .subtab-btn {
-  background-color: var(--ci-white);
-  color: #64748b;
-  border: 1px solid #e2e8f0;
-  padding: 6px 16px;
+  padding: 8px 16px;
   border-radius: 9999px;
-  font-family: var(--font-sans);
-  font-size: 0.8rem;
+  border: 1px solid rgba(121, 4, 10, 0.2);
+  background: var(--ci-light-blue, #f1f5f9);
+  color: var(--ci-burgundy, #79040a);
   font-weight: 600;
+  font-size: 0.85rem;
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
+.subtab-btn.active,
 .subtab-btn:hover {
-  border-color: var(--ci-burgundy);
-  color: var(--ci-burgundy);
+  background: var(--ci-burgundy, #79040a);
+  color: #ffffff;
 }
 
-.subtab-btn.active {
-  background-color: var(--ci-light-blue);
-  color: var(--ci-burgundy);
-  border-color: rgba(121, 4, 10, 0.3);
+/* Directory Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  background-color: var(--ci-light-blue, #f1f5f9);
+  border: 1px solid rgba(121, 4, 10, 0.2);
+  border-radius: 9999px;
+  color: var(--ci-burgundy, #79040a);
   font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-bottom: 2rem;
+  transition: all 0.2s ease;
+}
+
+.back-btn:hover {
+  background-color: var(--ci-burgundy, #79040a);
+  color: #ffffff;
 }
 
 /* Advisor Showcase */

@@ -34,17 +34,17 @@
 
       <!-- Nav Links -->
       <nav class="nav-links" id="nav-links">
-         <a href="#" class="nav-item active" data-tab="tab-home" onclick="switchTab('tab-home'); return false;">Home</a>
-         <a href="#" class="nav-item" data-tab="tab-org-chart" onclick="switchTab('tab-org-chart'); return false;">Organisational Structure</a>
-          <a href="#" class="nav-item" data-tab="tab-journey" onclick="switchTab('tab-journey'); return false;">Our Journey</a>
-          <a href="#" class="nav-item" data-tab="tab-news" onclick="switchTab('tab-news'); return false;">News</a>
-         <a href="#" class="nav-item" data-tab="tab-newsplus" onclick="switchTab('tab-newsplus'); return false;">News+</a>
-         <a href="#" class="nav-item" data-tab="tab-podcast" onclick="switchTab('tab-podcast'); return false;">Podcast</a>
-  
-      <div class="nav-status-mobile">
-        <span class="status-badge">OCTOBER 2026</span>
-     </div>
-  </nav>
+        <a href="#" class="nav-item active" data-tab="tab-home" onclick="switchTab('tab-home'); return false;">Home</a>
+        <a href="#" class="nav-item" data-tab="tab-org-chart" onclick="switchTab('tab-org-chart'); return false;">Organisational Structure</a>
+        <a href="#" class="nav-item" data-tab="tab-journey" onclick="switchTab('tab-journey'); return false;">Our Journey</a>
+        <a href="#" class="nav-item" data-tab="tab-news" onclick="switchTab('tab-news'); return false;">News</a>
+        <a href="#" class="nav-item" data-tab="tab-newsplus" onclick="switchTab('tab-newsplus'); return false;">News+</a>
+        <a href="#" class="nav-item" data-tab="tab-podcast" onclick="switchTab('tab-podcast'); return false;">Podcast</a>
+
+        <div class="nav-status-mobile">
+          <span class="status-badge">OCTOBER 2026</span>
+        </div>
+      </nav>
 
       <div class="nav-status-desktop">
         <span class="status-badge">OCTOBER 2026</span>
@@ -443,81 +443,137 @@
     </section>
 
     <!-- 5. NEWS+ TAB (SPECIAL REPORTING) -->
-    <section id="tab-newsplus" class="tab-page">
-      <div class="content-wrapper">
-        <div id="newsplus-directory-view">
-          <div class="hero-section" style="text-align: center;">
-            <div class="hero-tagline">SPECIAL REPORTING</div>
-            <h1 class="hero-title">NEWS+</h1>
-            <p class="hero-subtext">In-depth investigations, solutions journalism features, and reflective long-form pieces.</p>
-          </div>
+    <section class="tab-page" id="tab-newsplus">
 
-          <!-- Language Filter Subtabs -->
-          <div class="subtabs-bar">
-            <button class="subtab-btn active" data-newsplus-lang="all">All Features</button>
-            <button class="subtab-btn" data-newsplus-lang="bm">Bahasa Melayu</button>
-            <button class="subtab-btn" data-newsplus-lang="en">English</button>
-          </div>
+      <!-- DIRECTORY VIEW -->
+      <div id="newsplus-directory-view">
+        <header class="hero-section" style="text-align: center;">
+          <div class="hero-tagline">EXCLUSIVES</div>
+          <h1 class="hero-title">NEWS+</h1>
+          <p class="hero-subtext">Exclusive features, editorials, media monitoring, and special reports.</p>
+        </header>
 
-          <!-- Article Grid -->
-          <div class="news-grid" id="newsplus-grid">
-            <!-- Dummy BM News+ Card -->
-            <article class="article-card" data-category="bm" onclick="openNewsPlusArticle('newsplus-1')">
-              <div class="article-card-img-wrap">
-                <img src="assets/dummy_photo.jpg" alt="Journalism Media Collage" class="article-card-img">
-              </div>
-              <div class="article-card-body">
-                <div class="article-meta-top">
-                  <span class="feature-badge">LAPORAN SIASATAN</span>
-                  <span class="article-read-time">6 MIN READ</span>
-                </div>
-                <h3 class="article-title">Cabaran Transisi Kenderaan Elektrik Dalam Kampus IPT</h3>
-                <p class="article-snippet">Analisis terhadap infrastruktur pengecasan EV dan kesediaannya untuk generasi muda di Selangor.</p>
-                <div class="article-footer-info">
-                  <span class="article-author">Feature by Naufal Muammar</span>
-                  <span class="article-date">30 OCT 2026</span>
-                </div>
-              </div>
-            </article>
-
-            <!-- Dummy ENG News+ Card -->
-            <article class="article-card" data-category="en" onclick="openNewsPlusArticle('newsplus-2')">
-              <div class="article-card-img-wrap">
-                <img src="assets/dummy_photo.jpg" alt="Journalism Media Collage" class="article-card-img">
-              </div>
-              <div class="article-card-body">
-                <div class="article-meta-top">
-                  <span class="feature-badge">EXCLUSIVITY</span>
-                  <span class="article-read-time">5 MIN READ</span>
-                </div>
-                <h3 class="article-title">Fast Fashion Sustainability: Beyond Youth Consumerism</h3>
-                <p class="article-snippet">Exploring how local circular fashion movements provide sustainable alternatives for university students.</p>
-                <div class="article-footer-info">
-                  <span class="article-author">Feature by Nur Ameena</span>
-                  <span class="article-date">01 NOV 2026</span>
-                </div>
-              </div>
-            </article>
-          </div>
+        <!-- Subcategories Filter Bar -->
+        <div class="subtabs-bar">
+          <button class="subtab-btn active" onclick="filterNewsPlus('all', this)">All</button>
+          <button class="subtab-btn" onclick="filterNewsPlus('editorial', this)">Editorial</button>
+          <button class="subtab-btn" onclick="filterNewsPlus('profile-story', this)">Profile Story</button>
+          <button class="subtab-btn" onclick="filterNewsPlus('media-monitoring', this)">Media Monitoring</button>
+          <button class="subtab-btn" onclick="filterNewsPlus('infographic', this)">Infographic</button>
+          <button class="subtab-btn" onclick="filterNewsPlus('special-report', this)">Special Report</button>
         </div>
 
-        <!-- Article Reader Container -->
-        <div id="newsplus-article-view" style="display: none;">
-          <div id="newsplus-article-content" class="article-reader-box">
-            <button onclick="closeNewsPlusArticle()" class="back-btn" style="margin-bottom: 1.5rem;">&larr; Back to Features Directory</button>
-            <span class="feature-badge">LAPORAN SIASATAN</span>
-            <h1 class="article-headline" style="color: var(--ci-burgundy); margin: 1rem 0;">Cabaran Transisi Kenderaan Elektrik Dalam Kampus IPT</h1>
-            <p style="color: #64748b; font-size: 0.85rem;">SHAH ALAM | 30 OKTOBER 2026</p>
-            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
-            <p class="lead-paragraph" style="font-weight: 600; font-size: 1.1rem; line-height: 1.7; color: #0f172a;">
-              Kajian mendalam terhadap ekosistem pengangkutan lestari dan keupayaan infrastruktur stesen cas elektrik.
-            </p>
-            <p style="line-height: 1.8; color: #334155; margin-top: 1rem;">
-              Laporan siasatan penuh akan diterbitkan secara lengkap di ruang News+ ini.
-            </p>
-          </div>
+        <!-- Article Preview Grid -->
+        <div class="news-grid" id="newsplus-grid">
+
+          <!-- Editorial Card -->
+          <article class="article-card" data-category="editorial" onclick="openNewsPlusArticle('newsplus-1')">
+            <div class="article-card-img-wrap">
+              <img src="assets/dummy_photo.jpg" alt="Editorial" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Editorial';">
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta-top">
+                <span class="feature-badge">EDITORIAL</span>
+                <span class="article-read-time">4 MIN READ</span>
+              </div>
+              <h3 class="article-title">THE RISE OF INFLUENCER JOURNALIST TRUSTING FACES OVER FACTS</h3>
+              <p class="article-snippet">Exploring the shifts in audience trust toward personality-driven content creators over traditional media.</p>
+              <div class="article-footer-info">
+                <span class="article-author">By Editorial Team</span>
+                <span class="article-date">NOV 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Profile Story Card -->
+          <article class="article-card" data-category="profile-story" onclick="openNewsPlusArticle('newsplus-2')">
+            <div class="article-card-img-wrap">
+              <img src="assets/dummy_photo.jpg" alt="Profile Story" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Profile+Story';">
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta-top">
+                <span class="feature-badge">PROFILE STORY</span>
+                <span class="article-read-time">5 MIN READ</span>
+              </div>
+              <h3 class="article-title">Pioneering Visual Storytelling in Modern Newsrooms</h3>
+              <p class="article-snippet">An in-depth look into the career journey and creative philosophy of visual photojournalists.</p>
+              <div class="article-footer-info">
+                <span class="article-author">By Student Reporter</span>
+                <span class="article-date">NOV 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Media Monitoring Card -->
+          <article class="article-card" data-category="media-monitoring" onclick="openNewsPlusArticle('newsplus-3')">
+            <div class="article-card-img-wrap">
+              <img src="assets/dummy_photo.jpg" alt="Media Monitoring" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Media+Monitoring';">
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta-top">
+                <span class="feature-badge">MEDIA MONITORING</span>
+                <span class="article-read-time">6 MIN READ</span>
+              </div>
+              <h3 class="article-title">Analyzing Digital Journalism Trends in Higher Learning</h3>
+              <p class="article-snippet">Tracking news coverage patterns and digital engagement metrics across institutional reporting.</p>
+              <div class="article-footer-info">
+                <span class="article-author">By Media Desk</span>
+                <span class="article-date">NOV 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Infographic Card -->
+          <article class="article-card" data-category="infographic" onclick="openNewsPlusArticle('newsplus-4')">
+            <div class="article-card-img-wrap">
+              <img src="assets/dummy_photo.jpg" alt="Infographic" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Infographic';">
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta-top">
+                <span class="feature-badge">INFOGRAPHIC</span>
+                <span class="article-read-time">2 MIN READ</span>
+              </div>
+              <h3 class="article-title">Solutions Journalism by the Numbers</h3>
+              <p class="article-snippet">A visual breakdown of key metrics, data points, and audience engagement statistics.</p>
+              <div class="article-footer-info">
+                <span class="article-author">Graphics Desk</span>
+                <span class="article-date">NOV 2026</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Special Report Card -->
+          <article class="article-card" data-category="special-report" onclick="openNewsPlusArticle('newsplus-5')">
+            <div class="article-card-img-wrap">
+              <img src="assets/dummy_photo.jpg" alt="Special Report" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Special+Report';">
+            </div>
+            <div class="article-card-body">
+              <div class="article-meta-top">
+                <span class="feature-badge">SPECIAL REPORT</span>
+                <span class="article-read-time">8 MIN READ</span>
+              </div>
+              <h3 class="article-title">Electric Vehicle Infrastructure Readiness Across Selangor</h3>
+              <p class="article-snippet">A comprehensive investigation into charging station availability and student adoption rates.</p>
+              <div class="article-footer-info">
+                <span class="article-author">Special Desk</span>
+                <span class="article-date">NOV 2026</span>
+              </div>
+            </div>
+          </article>
+
         </div>
       </div>
+
+      <!-- ARTICLE DETAIL VIEW -->
+      <div id="newsplus-article-view" style="display: none;">
+        <button class="back-btn" onclick="closeNewsPlusArticle()">
+          &larr; Back to News+ Directory
+        </button>
+        <div id="newsplus-article-content" class="article-full-container">
+          <!-- Injected dynamically by JavaScript -->
+        </div>
+      </div>
+
     </section>
 
     <!-- 6. PODCAST TAB -->
@@ -633,7 +689,7 @@
 
   <!-- Back to Top Floating Button -->
   <button id="back-to-top-btn" class="back-to-top-btn" aria-label="Back to top" onclick="scrollToTop()">
-  &uarr; Top
+    &uarr; Top
   </button>
 
   <!-- Core Script -->
