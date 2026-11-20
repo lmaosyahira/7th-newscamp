@@ -681,7 +681,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  window.openNewsPlusArticle = function(id) {
+window.openNewsPlusArticle = function(id) {
     const directoryView = document.getElementById('newsplus-directory-view');
     const articleView = document.getElementById('newsplus-article-view');
     const articleContent = document.getElementById('newsplus-article-content');
@@ -689,15 +689,16 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!directoryView || !articleView || !articleContent) return;
 
     articleContent.innerHTML = `
-      <article class="full-article">
-        <span class="feature-badge">NEWS+ EXCLUSIVE</span>
-        <h1 class="article-headline" style="color: var(--ci-burgundy, #79040A); font-weight: 800; font-size: 1.8rem; margin: 1rem 0 0.5rem;">Special Feature Article</h1>
-        <p style="color: #64748b; font-size: 0.85rem; font-weight: 600;">Published November 2026 | NewsCamp 7.0 Editorial Desk</p>
-        <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
-        <div class="article-full-body">
-          <p style="line-height: 1.8; color: #334155;">Full article text content and multimedia elements for item (${id}) will be displayed here.</p>
-        </div>
-      </article>
+      <button onclick="closeNewsPlusArticle()" class="back-btn">
+        &larr; Back to News+ Directory
+      </button>
+      <span class="feature-badge">NEWS+ EXCLUSIVE</span>
+      <h1 class="article-headline" style="color: var(--ci-burgundy, #79040A); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.8rem; margin: 1rem 0 0.5rem;">Special Feature Article</h1>
+      <p style="color: #64748b; font-size: 0.85rem; font-weight: 600;">Published November 2026 • NewsCamp 7.0 Editorial Desk</p>
+      <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
+      <div class="article-full-body">
+        <p style="line-height: 1.8; color: #334155;">Full article text content and multimedia elements for item (${id}) will be displayed here.</p>
+      </div>
     `;
 
     directoryView.style.display = 'none';

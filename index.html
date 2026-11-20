@@ -494,138 +494,135 @@
       </div>
     </section>
 
-    <!-- 5. NEWS+ TAB (SPECIAL REPORTING) -->
+   <!-- 5. NEWS+ TAB (SPECIAL REPORTING) -->
     <section class="tab-page" id="tab-newsplus">
+      <div class="content-wrapper">
+        <!-- DIRECTORY VIEW -->
+        <div id="newsplus-directory-view">
+          <header class="hero-section" style="text-align: center;">
+            <div class="hero-tagline">EXCLUSIVES</div>
+            <h1 class="hero-title">NEWS+</h1>
+            <p class="hero-subtext">Exclusive features, editorials, media monitoring, and special reports.</p>
+          </header>
 
-      <!-- DIRECTORY VIEW -->
-      <div id="newsplus-directory-view">
-        <header class="hero-section" style="text-align: center;">
-          <div class="hero-tagline">EXCLUSIVES</div>
-          <h1 class="hero-title">NEWS+</h1>
-          <p class="hero-subtext">Exclusive features, editorials, media monitoring, and special reports.</p>
-        </header>
+          <!-- Subcategories Filter Bar -->
+          <div class="subtabs-bar">
+            <button class="subtab-btn active" onclick="filterNewsPlus('all', this)">All</button>
+            <button class="subtab-btn" onclick="filterNewsPlus('editorial', this)">Editorial</button>
+            <button class="subtab-btn" onclick="filterNewsPlus('profile-story', this)">Profile Story</button>
+            <button class="subtab-btn" onclick="filterNewsPlus('media-monitoring', this)">Media Monitoring</button>
+            <button class="subtab-btn" onclick="filterNewsPlus('infographic', this)">Infographic</button>
+            <button class="subtab-btn" onclick="filterNewsPlus('special-report', this)">Special Report</button>
+          </div>
 
-        <!-- Subcategories Filter Bar -->
-        <div class="subtabs-bar">
-          <button class="subtab-btn active" onclick="filterNewsPlus('all', this)">All</button>
-          <button class="subtab-btn" onclick="filterNewsPlus('editorial', this)">Editorial</button>
-          <button class="subtab-btn" onclick="filterNewsPlus('profile-story', this)">Profile Story</button>
-          <button class="subtab-btn" onclick="filterNewsPlus('media-monitoring', this)">Media Monitoring</button>
-          <button class="subtab-btn" onclick="filterNewsPlus('infographic', this)">Infographic</button>
-          <button class="subtab-btn" onclick="filterNewsPlus('special-report', this)">Special Report</button>
+          <!-- Article Preview Grid -->
+          <div class="news-grid" id="newsplus-grid">
+
+            <!-- Editorial Card -->
+            <article class="article-card" data-category="editorial" onclick="openNewsPlusArticle('newsplus-1')">
+              <div class="article-card-img-wrap">
+                <img src="assets/dummy_photo.jpg" alt="Editorial" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Editorial';">
+              </div>
+              <div class="article-card-body">
+                <div class="article-meta-top">
+                  <span class="feature-badge">EDITORIAL</span>
+                  <span class="article-read-time">4 MIN READ</span>
+                </div>
+                <h3 class="article-title">THE RISE OF INFLUENCER JOURNALIST TRUSTING FACES OVER FACTS</h3>
+                <p class="article-snippet">Exploring the shifts in audience trust toward personality-driven content creators over traditional media.</p>
+                <div class="article-footer-info">
+                  <span class="article-author">By Editorial Team</span>
+                  <span class="article-date">NOV 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Profile Story Card -->
+            <article class="article-card" data-category="profile-story" onclick="openNewsPlusArticle('newsplus-2')">
+              <div class="article-card-img-wrap">
+                <img src="assets/dummy_photo.jpg" alt="Profile Story" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Profile+Story';">
+              </div>
+              <div class="article-card-body">
+                <div class="article-meta-top">
+                  <span class="feature-badge">PROFILE STORY</span>
+                  <span class="article-read-time">5 MIN READ</span>
+                </div>
+                <h3 class="article-title">Pioneering Visual Storytelling in Modern Newsrooms</h3>
+                <p class="article-snippet">An in-depth look into the career journey and creative philosophy of visual photojournalists.</p>
+                <div class="article-footer-info">
+                  <span class="article-author">By Student Reporter</span>
+                  <span class="article-date">NOV 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Media Monitoring Card -->
+            <article class="article-card" data-category="media-monitoring" onclick="openNewsPlusArticle('newsplus-3')">
+              <div class="article-card-img-wrap">
+                <img src="assets/dummy_photo.jpg" alt="Media Monitoring" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Media+Monitoring';">
+              </div>
+              <div class="article-card-body">
+                <div class="article-meta-top">
+                  <span class="feature-badge">MEDIA MONITORING</span>
+                  <span class="article-read-time">6 MIN READ</span>
+                </div>
+                <h3 class="article-title">Analyzing Digital Journalism Trends in Higher Learning</h3>
+                <p class="article-snippet">Tracking news coverage patterns and digital engagement metrics across institutional reporting.</p>
+                <div class="article-footer-info">
+                  <span class="article-author">By Media Desk</span>
+                  <span class="article-date">NOV 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Infographic Card -->
+            <article class="article-card" data-category="infographic" onclick="openNewsPlusArticle('newsplus-4')">
+              <div class="article-card-img-wrap">
+                <img src="assets/dummy_photo.jpg" alt="Infographic" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Infographic';">
+              </div>
+              <div class="article-card-body">
+                <div class="article-meta-top">
+                  <span class="feature-badge">INFOGRAPHIC</span>
+                  <span class="article-read-time">2 MIN READ</span>
+                </div>
+                <h3 class="article-title">Solutions Journalism by the Numbers</h3>
+                <p class="article-snippet">A visual breakdown of key metrics, data points, and audience engagement statistics.</p>
+                <div class="article-footer-info">
+                  <span class="article-author">Graphics Desk</span>
+                  <span class="article-date">NOV 2026</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Special Report Card -->
+            <article class="article-card" data-category="special-report" onclick="openNewsPlusArticle('newsplus-5')">
+              <div class="article-card-img-wrap">
+                <img src="assets/dummy_photo.jpg" alt="Special Report" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Special+Report';">
+              </div>
+              <div class="article-card-body">
+                <div class="article-meta-top">
+                  <span class="feature-badge">SPECIAL REPORT</span>
+                  <span class="article-read-time">8 MIN READ</span>
+                </div>
+                <h3 class="article-title">Electric Vehicle Infrastructure Readiness Across Selangor</h3>
+                <p class="article-snippet">A comprehensive investigation into charging station availability and student adoption rates.</p>
+                <div class="article-footer-info">
+                  <span class="article-author">Special Desk</span>
+                  <span class="article-date">NOV 2026</span>
+                </div>
+              </div>
+            </article>
+
+          </div>
         </div>
 
-        <!-- Article Preview Grid -->
-        <div class="news-grid" id="newsplus-grid">
-
-          <!-- Editorial Card -->
-          <article class="article-card" data-category="editorial" onclick="openNewsPlusArticle('newsplus-1')">
-            <div class="article-card-img-wrap">
-              <img src="assets/dummy_photo.jpg" alt="Editorial" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Editorial';">
-            </div>
-            <div class="article-card-body">
-              <div class="article-meta-top">
-                <span class="feature-badge">EDITORIAL</span>
-                <span class="article-read-time">4 MIN READ</span>
-              </div>
-              <h3 class="article-title">THE RISE OF INFLUENCER JOURNALIST TRUSTING FACES OVER FACTS</h3>
-              <p class="article-snippet">Exploring the shifts in audience trust toward personality-driven content creators over traditional media.</p>
-              <div class="article-footer-info">
-                <span class="article-author">By Editorial Team</span>
-                <span class="article-date">NOV 2026</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Profile Story Card -->
-          <article class="article-card" data-category="profile-story" onclick="openNewsPlusArticle('newsplus-2')">
-            <div class="article-card-img-wrap">
-              <img src="assets/dummy_photo.jpg" alt="Profile Story" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Profile+Story';">
-            </div>
-            <div class="article-card-body">
-              <div class="article-meta-top">
-                <span class="feature-badge">PROFILE STORY</span>
-                <span class="article-read-time">5 MIN READ</span>
-              </div>
-              <h3 class="article-title">Pioneering Visual Storytelling in Modern Newsrooms</h3>
-              <p class="article-snippet">An in-depth look into the career journey and creative philosophy of visual photojournalists.</p>
-              <div class="article-footer-info">
-                <span class="article-author">By Student Reporter</span>
-                <span class="article-date">NOV 2026</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Media Monitoring Card -->
-          <article class="article-card" data-category="media-monitoring" onclick="openNewsPlusArticle('newsplus-3')">
-            <div class="article-card-img-wrap">
-              <img src="assets/dummy_photo.jpg" alt="Media Monitoring" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Media+Monitoring';">
-            </div>
-            <div class="article-card-body">
-              <div class="article-meta-top">
-                <span class="feature-badge">MEDIA MONITORING</span>
-                <span class="article-read-time">6 MIN READ</span>
-              </div>
-              <h3 class="article-title">Analyzing Digital Journalism Trends in Higher Learning</h3>
-              <p class="article-snippet">Tracking news coverage patterns and digital engagement metrics across institutional reporting.</p>
-              <div class="article-footer-info">
-                <span class="article-author">By Media Desk</span>
-                <span class="article-date">NOV 2026</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Infographic Card -->
-          <article class="article-card" data-category="infographic" onclick="openNewsPlusArticle('newsplus-4')">
-            <div class="article-card-img-wrap">
-              <img src="assets/dummy_photo.jpg" alt="Infographic" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Infographic';">
-            </div>
-            <div class="article-card-body">
-              <div class="article-meta-top">
-                <span class="feature-badge">INFOGRAPHIC</span>
-                <span class="article-read-time">2 MIN READ</span>
-              </div>
-              <h3 class="article-title">Solutions Journalism by the Numbers</h3>
-              <p class="article-snippet">A visual breakdown of key metrics, data points, and audience engagement statistics.</p>
-              <div class="article-footer-info">
-                <span class="article-author">Graphics Desk</span>
-                <span class="article-date">NOV 2026</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- Special Report Card -->
-          <article class="article-card" data-category="special-report" onclick="openNewsPlusArticle('newsplus-5')">
-            <div class="article-card-img-wrap">
-              <img src="assets/dummy_photo.jpg" alt="Special Report" class="article-card-img" onerror="this.src='https://via.placeholder.com/600x400?text=Special+Report';">
-            </div>
-            <div class="article-card-body">
-              <div class="article-meta-top">
-                <span class="feature-badge">SPECIAL REPORT</span>
-                <span class="article-read-time">8 MIN READ</span>
-              </div>
-              <h3 class="article-title">Electric Vehicle Infrastructure Readiness Across Selangor</h3>
-              <p class="article-snippet">A comprehensive investigation into charging station availability and student adoption rates.</p>
-              <div class="article-footer-info">
-                <span class="article-author">Special Desk</span>
-                <span class="article-date">NOV 2026</span>
-              </div>
-            </div>
-          </article>
-
-        </div>
-      </div>
-
-      <!-- ARTICLE DETAIL VIEW -->
-      <div id="newsplus-article-view" style="display: none;">
-        <button class="back-btn" onclick="closeNewsPlusArticle()">
-          &larr; Back to News+ Directory
-        </button>
-        <div id="newsplus-article-content" class="article-full-container">
-          <!-- Injected dynamically by JavaScript -->
+        <!-- ARTICLE DETAIL VIEW (MATCHING NEWS WHITE CARD BOX) -->
+        <div id="newsplus-article-view" style="display: none;">
+          <div id="newsplus-article-content" class="article-reader-box">
+            <!-- Injected dynamically by script.js -->
+          </div>
         </div>
       </div>
-
     </section>
 
     <!-- 6. PODCAST TAB -->
@@ -690,10 +687,12 @@
         <!-- Podcast Player Container -->
         <div id="podcast-episode-view" style="display: none;">
           <div id="podcast-episode-content" class="article-reader-box">
-            <button onclick="closePodcastEpisode()" class="back-btn" style="margin-bottom: 1.5rem;">&larr; Back to Podcast Directory</button>
+            <button onclick="closePodcastEpisode()" class="back-btn">&larr; Back to Podcast Directory</button>
             <span class="feature-badge" style="background: #10b981; color: white;">PODCAST EPISODE</span>
-            <h2 class="article-title">Episode 1: Introduction to NewsCamp 7.0</h2>
-            <p class="article-snippet">Join us as we dive into the exciting world of NewsCamp 7.0 and explore what makes it different from previous editions.</p>
+            <h1 class="article-headline" style="color: var(--ci-burgundy, #79040A); font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 1.8rem; margin: 1rem 0 0.5rem;">Episode 1: Introduction to NewsCamp 7.0</h1>
+            <p style="color: #64748b; font-size: 0.85rem; font-weight: 600;">02 NOVEMBER 2026 • Hosted by Nur Alia Maisarah</p>
+            <hr style="margin: 1.5rem 0; border: none; border-top: 1px solid #e2e8f0;">
+            <p style="line-height: 1.8; color: #334155;">Join us as we dive into the exciting world of NewsCamp 7.0 and explore what makes it different from previous editions.</p>
           </div>
         </div>
       </div>

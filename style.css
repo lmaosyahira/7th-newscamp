@@ -1385,14 +1385,45 @@ body {
   padding-top: 0.75rem;
 }
 
+/* ==========================================
+   UNIFIED READER CARD & PILL ALIGNMENT (NEWS, NEWS+, PODCAST)
+   ========================================== */
 .article-reader-box {
   background-color: #ffffff;
-  border-radius: 12px;
-  padding: 2.5rem 2rem;
-  border: 1px solid #f1f5f9;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-  max-width: 850px;
-  margin: 0 auto;
+  border-radius: 16px;
+  padding: 2.5rem 3rem;
+  max-width: 820px;
+  margin: 0 auto 3rem;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.article-reader-box .back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  margin: 0 16px 0 0 !important;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.article-reader-box .feature-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  margin: 0 !important;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+@media (max-width: 640px) {
+  .article-reader-box {
+    padding: 1.75rem 1.25rem;
+  }
 }
 
 /* Mobile Responsive */
@@ -1506,4 +1537,36 @@ body {
   flex-wrap: wrap;
   width: 100%;
   margin: 0 auto 2.5rem;
+}
+
+.back-btn {
+  margin-right: 16px; /* Adds horizontal space before the subcategory pill */
+  vertical-align: middle;
+}
+
+/* ==========================================
+   EXACT PILL HEIGHT & VERTICAL ALIGNMENT
+   ========================================== */
+.article-reader-box .back-btn,
+#newsplus-article-view .back-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 18px;
+  margin: 0 16px 0 0 !important;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.article-reader-box .feature-badge,
+#newsplus-article-view .feature-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  margin: 0 !important;
+  vertical-align: top;
+  box-sizing: border-box;
 }
