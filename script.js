@@ -347,6 +347,8 @@ document.addEventListener('DOMContentLoaded', () => {
       subtitle: "Rethinking Journalism Through Solutions & Visual Storytelling",
       description: "Virtual sessions connect industry experts and alumni with audiences locally and internationally, enabling meaningful exchanges of knowledge and experience.",
       posterImg: "assets/ECOLL_POSTER.png",
+      overviewTitle: "Colloquium Overview",
+      speakersHeading: "Meet the Panelists & Moderator",
       overview: {
         date: "3 November 2026",
         time: "10:00 A.M. (MYT)",
@@ -382,17 +384,32 @@ document.addEventListener('DOMContentLoaded', () => {
       newsLink: "tab-news"
     },
     workshop: {
-      badge: "MEDIA WORKSHOP 2026",
-      title: "NEWSROOM SKILLS WORKSHOP",
-      subtitle: "Digital Verification & Data Journalism",
-      description: "Hands-on intensive workshop preparing student journalists with modern verification tools, ethics, and visual reporting techniques.",
-      posterImg: "assets/dummy_photo.jpg",
+      badge: "MEDIA WORKSHOP 2026 • IN CONJUNCTION WITH COMMED FESTIVAL",
+      title: "MEDIA WORKSHOP",
+      subtitle: "On Solutions Journalism",
+      description: "An intensive full-day workshop equipping student journalists with practical frameworks for finding a solutions angle and translating solutions journalism into impactful multimedia storytelling.",
+      posterImg: "assets/Main Digital Backdrop.jpg",
+      overviewTitle: "Workshop Overview",
+      speakersHeading: "Meet the Speakers",
       overview: {
-        date: "October 2026",
-        time: "2:00 P.M. - 5:00 P.M.",
-        platform: "Media Lab 1, FCMS UiTM"
+        date: "23 November 2026 (Monday)",
+        time: "8:00 A.M. – 4:00 P.M.",
+        platform: "Bilik Seminar PTAR 1, UiTM Shah Alam"
       },
-      speakers: [],
+      speakers: [
+        {
+          type: "SESSION 1 SPEAKER",
+          name: "Ian Yee",
+          role: "The Fourth • Topic: Finding and Reporting a Solutions Angle",
+          image: "assets/IAN YEE.jpg"
+        },
+        {
+          type: "SESI 2 SPEAKER",
+          name: "Seth Akmal",
+          role: "Astro Awani • Topik: Menterjemah Kewartawanan Solusi kepada Penceritaan Multimedia",
+          image: "assets/SETH AKMAL.png"
+        }
+      ],
       gallery: [],
       newsLink: "tab-news"
     }
@@ -410,7 +427,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const speakersHTML = data.speakers.length > 0 ? `
       <div class="modal-speakers-section">
         <div class="modal-section-tag">FEATURED SPEAKERS</div>
-        <h3 class="modal-section-title">Meet the Panelists & Moderator</h3>
+        <h3 class="modal-section-title">${data.speakersHeading || 'Meet the Panelists & Moderator'}</h3>
         <div class="modal-speakers-grid">
           ${data.speakers.map(s => `
             <div class="speaker-card">
@@ -474,11 +491,11 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
         <div class="modal-details-card">
           <div class="modal-section-tag">SESSION DETAILS</div>
-          <h3 class="modal-section-title">Colloquium Overview</h3>
+          <h3 class="modal-section-title">${data.overviewTitle || 'Session Overview'}</h3>
           <ul class="event-meta-list">
             <li><strong>📅 Date:</strong> ${data.overview.date}</li>
             <li><strong>⏰ Time:</strong> ${data.overview.time}</li>
-            <li><strong>📍 Platform:</strong> ${data.overview.platform}</li>
+            <li><strong>📍 Venue / Platform:</strong> ${data.overview.platform}</li>
           </ul>
         </div>
       </div>
@@ -681,7 +698,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-window.openNewsPlusArticle = function(id) {
+  window.openNewsPlusArticle = function(id) {
     const directoryView = document.getElementById('newsplus-directory-view');
     const articleView = document.getElementById('newsplus-article-view');
     const articleContent = document.getElementById('newsplus-article-content');
