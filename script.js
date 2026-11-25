@@ -401,7 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
           type: "SESSION 1 SPEAKER",
           name: "Ian Yee",
           role: "The Fourth • Topic: Finding and Reporting a Solutions Angle",
-          image: "assets/IAN YEE.jpg"
+          image: "assets/IAN YEE.png"
         },
         {
           type: "SESI 2 SPEAKER",
