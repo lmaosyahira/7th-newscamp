@@ -400,13 +400,15 @@ document.addEventListener('DOMContentLoaded', () => {
         {
           type: "SESSION 1 SPEAKER",
           name: "Ian Yee",
-          role: "The Fourth • Topic: Finding and Reporting a Solutions Angle",
+          role: "The Fourth",
+          topic: "Finding and Reporting a Solutions Angle",
           image: "assets/IAN YEE.png"
         },
         {
           type: "SESI 2 SPEAKER",
           name: "Seth Akmal",
-          role: "Astro Awani • Topik: Menterjemah Kewartawanan Solusi kepada Penceritaan Multimedia",
+          role: "Astro Awani",
+          topic: "Menterjemah Kewartawanan Solusi kepada Penceritaan Multimedia",
           image: "assets/SETH AKMAL.png"
         }
       ],
